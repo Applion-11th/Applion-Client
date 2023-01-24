@@ -1,7 +1,7 @@
 # Applion-Client
 Applion page for client
 
-#기본사항
+## 기본사항
 
 1. 다운받을 폴더 `git init`
 2. `git remote add origin 플젝주소`
