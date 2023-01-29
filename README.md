@@ -1,10 +1,6 @@
 # Applion-Client
 
-Applion page for client
-
-### 기본사항
-
----
+## 기본사항
 
 - 작업할 폴더 생성 후 `git clone`
 
