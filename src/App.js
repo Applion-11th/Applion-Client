@@ -1,7 +1,12 @@
 import "./App.css";
+import Router from "./components/Router";
 
-function App() {
-  return <div className="App">개발을 아자아자 해봅시다!</div>;
-}
+const App = () => {
+  return (
+    <>
+      <Router />
+    </>
+  );
+};
 
 export default App;
