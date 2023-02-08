@@ -9,6 +9,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Info from "./pages/Info";
+import Application from "./pages/Application";
 
 const App = () => {
   const isPC = useMediaQuery({
@@ -26,6 +27,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/info" element={<Info />} />
+              <Route path="/apply" element={<Application />} />
             </Routes>
           </BrowserRouter>
         </>
