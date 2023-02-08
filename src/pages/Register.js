@@ -1,7 +1,6 @@
 import { Header } from "../components";
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
-import { BsFillChatFill } from "react-icons/bs";
 
 const Register = () => {
   return (
@@ -10,6 +9,8 @@ const Register = () => {
       <Space height="135px" />
       <Flex>
         <Title>회원가입</Title>
+        <Space height="10px" />
+        <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
         <Form>
           <Text>e-mail</Text>
@@ -22,7 +23,7 @@ const Register = () => {
           <InputPwd />
         </Form>
         <Space height="29px" />
-        <div
+        <Click
           onClick={() => {
             console.log("login");
           }}
@@ -34,7 +35,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
           />
-        </div>
+        </Click>
       </Flex>
     </>
   );
@@ -45,6 +46,11 @@ export default Register;
 const Title = styled.div`
   font-weight: 700;
   font-size: 32px;
+`;
+
+const Description = styled.div`
+  font-weight: 400;
+  font-size: 18px;
 `;
 
 const Text = styled.div`
@@ -63,3 +69,5 @@ const Flex = styled.div`
 const Form = styled.div`
   justify-content: flex-start;
 `;
+
+const Click = styled.div``;

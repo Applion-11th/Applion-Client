@@ -19,7 +19,7 @@ const Login = () => {
           <InputPwd />
         </Form>
         <Space height="29px" />
-        <div
+        <Click
           onClick={() => {
             console.log("login");
           }}
@@ -31,7 +31,7 @@ const Login = () => {
             fontSize="18px"
             borderRadius="10px"
           />
-        </div>
+        </Click>
         <Space height="29px" />
         <Button
           width="459px"
@@ -92,3 +92,5 @@ const KaKaoLoginBtn = styled.button`
   font-family: Pretendard;
   border-radius: 12px;
 `;
+
+const Click = styled.div``;
