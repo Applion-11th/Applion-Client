@@ -1,9 +1,15 @@
+import styled from "styled-components";
+
 const Test = () => {
   return (
     <>
-      <p>테스트 페이지입니다.</p>
+      <TestDiv>hi</TestDiv>
     </>
   );
 };
 
 export default Test;
+
+const TestDiv = styled.div`
+  font-family: D2Coding;
+`;
