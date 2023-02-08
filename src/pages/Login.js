@@ -1,4 +1,3 @@
-import { Header } from "../components";
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
@@ -6,7 +5,6 @@ import { BsFillChatFill } from "react-icons/bs";
 const Login = () => {
   return (
     <>
-      <Header />
       <Space height="135px" />
       <Flex>
         <Title>로그인</Title>

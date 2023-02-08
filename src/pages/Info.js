@@ -1,11 +1,9 @@
-import { Header } from "../components";
 import { Input, Button, Space } from "../components/atoms";
 import styled from "styled-components";
 
 const Info = () => {
   return (
     <>
-      <Header />
       <Space height="135px" />
       <Flex>
         <Title>지원자 정보</Title>

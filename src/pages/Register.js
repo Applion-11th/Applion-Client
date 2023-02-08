@@ -1,11 +1,9 @@
-import { Header } from "../components";
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 
 const Register = () => {
   return (
     <>
-      <Header />
       <Space height="135px" />
       <Flex>
         <Title>회원가입</Title>
