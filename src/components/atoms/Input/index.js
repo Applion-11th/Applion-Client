@@ -5,8 +5,8 @@ export const Input = () => {
 };
 
 const InputContainer = styled.input`
-  width: 459px;
-  height: 47px;
+  width: 427px;
+  height: 45px;
   border: 1px solid white;
   border-radius: 10px;
   padding: 0px 15px 0px 15px;
