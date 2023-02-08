@@ -5,7 +5,7 @@ import { BsFillChatFill } from "react-icons/bs";
 const Login = () => {
   return (
     <>
-      <Space height="135px" />
+      <Space height="50px" />
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Register = () => {
   return (
     <>
-      <Space height="135px" />
+      <Space height="50px" />
       <Flex>
         <Title>회원가입</Title>
         <Space height="10px" />

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Info = () => {
   return (
     <>
-      <Space height="135px" />
+      <Space height="30px" />
       <Flex>
         <Title>지원자 정보</Title>
         <Space height="10px" />
