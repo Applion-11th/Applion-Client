@@ -1,4 +1,3 @@
-import { Header } from "../components";
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
@@ -6,8 +5,7 @@ import { BsFillChatFill } from "react-icons/bs";
 const Login = () => {
   return (
     <>
-      <Header />
-      <Space height="135px" />
+      <Space height="50px" />
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />
@@ -19,7 +17,7 @@ const Login = () => {
           <InputPwd />
         </Form>
         <Space height="29px" />
-        <div
+        <Click
           onClick={() => {
             console.log("login");
           }}
@@ -31,7 +29,7 @@ const Login = () => {
             fontSize="18px"
             borderRadius="10px"
           />
-        </div>
+        </Click>
         <Space height="29px" />
         <Button
           width="459px"
@@ -92,3 +90,5 @@ const KaKaoLoginBtn = styled.button`
   font-family: Pretendard;
   border-radius: 12px;
 `;
+
+const Click = styled.div``;
