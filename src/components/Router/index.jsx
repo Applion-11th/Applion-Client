@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//Pages
-import Main from "../pages/Main";
-import Test from "../pages/Test";
 
-const Router = ({ user }) => {
+//pages
+import Main from "../../pages/Main";
+import Test from "../../pages/Test";
+
+export const Router = ({ user }) => {
   return (
     <BrowserRouter>
       <Routes>
@@ -14,5 +15,3 @@ const Router = ({ user }) => {
     </BrowserRouter>
   );
 };
-
-export default Router;
