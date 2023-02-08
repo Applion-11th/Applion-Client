@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //pages
 import Main from "../../pages/Main";
+
+//test page
 import Test from "../../pages/Test";
 
 export const Router = ({ user }) => {
