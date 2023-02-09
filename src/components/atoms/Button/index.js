@@ -12,7 +12,6 @@ export const Button = (props) => {
 
 const RedButton = styled.button`
   background-color: ${palette.red};
-  border: 1px solid white;
   border-radius: ${(props) => props.borderRadius};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
