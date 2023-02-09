@@ -8,7 +8,6 @@ const Application = () => {
   return (
     <>
       <Container>
-        {" "}
         <Flex>
           <Space height="20px" />
           <ImgContainer src={logo} />

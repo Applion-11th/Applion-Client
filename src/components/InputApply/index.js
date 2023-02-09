@@ -1,8 +1,35 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Space } from "../atoms";
 
 export const InputApply = () => {
-  return <InputApplyContainer />;
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    setCount(text.length);
+  }, [text]);
+
+  const changeHandler = (e) => {
+    setText(e.target.value);
+  };
+
+  return (
+    <>
+      <Flex>
+        <InputApplyContainer onChange={changeHandler} />
+        <Space height="10px" />
+        <CountContainer>{count}/500</CountContainer>
+      </Flex>
+    </>
+  );
 };
+
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
 
 const InputApplyContainer = styled.textarea`
   width: 80vw;
@@ -16,7 +43,12 @@ const InputApplyContainer = styled.textarea`
   color: white;
   caret-color: white;
   margin: 15px 0px 30px 0px;
+  maxlength: 500;
   &:focus {
     outline: none;
   }
+`;
+
+const CountContainer = styled.div`
+  font-size: 20px;
 `;
