@@ -52,3 +52,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Wakeup";
+  src: url("./fonts/EF_WAKEUP.ttf");
+}
