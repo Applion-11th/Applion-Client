@@ -55,6 +55,7 @@ const Text = styled.div`
   font-family: D2Coding;
   font-size: 20px;
   font-weight: 700;
+  padding-bottom: 10px;
 `;
 
 const Flex = styled.div`

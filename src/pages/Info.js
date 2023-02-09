@@ -63,6 +63,7 @@ const Text = styled.div`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 5px;
+  padding-bottom: 5px;
 `;
 
 const Flex = styled.div`
