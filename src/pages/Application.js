@@ -1,7 +1,7 @@
 import logo from "../assets/logoFull.svg";
 import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
-import { Space } from "../components/atoms";
+import { Button, Space } from "../components/atoms";
 import { InputApply } from "../components";
 
 const Application = () => {
@@ -53,7 +53,37 @@ const Application = () => {
             <InputApply />
           </Form>
         </Flex>
+        <ButtonContainer>
+          <Click
+            onClick={() => {
+              console.log("save");
+            }}
+          >
+            <Button
+              text="임시 저장"
+              width="130px"
+              height="59px"
+              fontSize="18px"
+              borderRadius="20px"
+            />
+          </Click>
+          <Space margin="0px 21px 0px 0px" />
+          <Click
+            onClick={() => {
+              console.log("submit");
+            }}
+          >
+            <Button
+              text="작성 완료"
+              width="130px"
+              height="59px"
+              fontSize="18px"
+              borderRadius="20px"
+            />
+          </Click>
+        </ButtonContainer>
       </Container>
+      <Space height="50px" />
     </>
   );
 };
@@ -61,6 +91,13 @@ const Application = () => {
 export default Application;
 
 const ImgContainer = styled.img``;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
 
 const Container = styled.div`
   max-width: 80vw;
@@ -101,3 +138,5 @@ const Text = styled.div`
   line-height: 150%;
   font-weight: bold;
 `;
+
+const Click = styled.div``;
