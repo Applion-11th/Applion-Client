@@ -6,7 +6,7 @@ import { useCountdown } from './useCountdown';
 const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
-      <span>지원 마감되었습니다!</span>
+      <div>지원 마감되었습니다!</div>
       <p>서강대학교 멋쟁이 사자처럼 11기에 지원해주셔서 감사합니다.</p>
       <p>서류 발표는 00월 00일에 개별 문자 드리겠습니다.</p>
     </div>
