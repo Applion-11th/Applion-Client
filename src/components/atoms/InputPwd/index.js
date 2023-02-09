@@ -7,7 +7,7 @@ export const InputPwd = () => {
 const InputPwdContainer = styled.input.attrs((props) => ({ type: "password" }))`
   width: 427px;
   height: 45px;
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 10px;
   padding: 0px 15px 0px 15px;
   font-family: D2Coding, sans-serif;

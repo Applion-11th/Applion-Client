@@ -44,7 +44,7 @@ const Flex = styled.div`
 const InputApplyContainer = styled.textarea`
   width: 80vw;
   height: 280px;
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 10px;
   padding: 15px 15px 15px 15px;
   font-family: Pretendard;
