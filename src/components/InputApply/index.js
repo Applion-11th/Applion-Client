@@ -7,17 +7,27 @@ export const InputApply = () => {
   const [text, setText] = useState("");
 
   useEffect(() => {
+    if (text.length === 501) {
+      setCount(500);
+    }
     setCount(text.length);
   }, [text]);
 
   const changeHandler = (e) => {
+    if (e.target.value.length > 500) {
+      setText(e.target.value.slice(0, 500));
+    }
     setText(e.target.value);
   };
 
   return (
     <>
       <Flex>
-        <InputApplyContainer onChange={changeHandler} />
+        <InputApplyContainer
+          onChange={changeHandler}
+          type="text"
+          maxLength="500"
+        />
         <CountContainer>{count}/500자</CountContainer>
         <Space height="20px" />
       </Flex>
@@ -43,7 +53,6 @@ const InputApplyContainer = styled.textarea`
   color: white;
   caret-color: white;
   margin: 15px 0px 10px 0px;
-  maxlength: 500;
   &:focus {
     outline: none;
   }
