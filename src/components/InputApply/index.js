@@ -18,8 +18,8 @@ export const InputApply = () => {
     <>
       <Flex>
         <InputApplyContainer onChange={changeHandler} />
-        <Space height="10px" />
-        <CountContainer>{count}/500</CountContainer>
+        <CountContainer>{count}/500자</CountContainer>
+        <Space height="20px" />
       </Flex>
     </>
   );
@@ -28,7 +28,7 @@ export const InputApply = () => {
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: flex-end;
 `;
 
 const InputApplyContainer = styled.textarea`
@@ -42,7 +42,7 @@ const InputApplyContainer = styled.textarea`
   background-color: black;
   color: white;
   caret-color: white;
-  margin: 15px 0px 30px 0px;
+  margin: 15px 0px 10px 0px;
   maxlength: 500;
   &:focus {
     outline: none;
