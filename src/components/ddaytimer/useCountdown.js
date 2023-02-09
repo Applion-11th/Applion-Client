@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const useCountdown = (targetDate) => {
-  const countDownDate = new Date('2023-03-10T23:59:59')
+  const countDownDate = new Date(targetDate).getTime();
 // new Date(targetDate).getTime();
   const [countDown, setCountDown] = useState(
-    countDownDate - new Date().getTime()
+    countDownDate - new Date(new Date().setHours(0,0,0,0)).getTime()
   );
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const useCountdown = (targetDate) => {
   return getReturnValues(countDown);
 };
 
+
 const getReturnValues = (countDown) => {
   //남은시간 계산
   let days = Math.floor(countDown / (1000 * 60 * 60 * 24));
@@ -28,11 +29,11 @@ const getReturnValues = (countDown) => {
   );
   let minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((countDown % (1000 * 60)) / 1000);
-
-//00:00:00 형식으로 나오도록
-hours =  hours < 10 ? `0${hours}` : hours;
-minutes = minutes < 10 ? `0${minutes}` : minutes;
-seconds = seconds < 10 ? `0${seconds}` : seconds;
+    
+  //00:00:00 으로 나오도록
+    if (hours.toString().length==1) hours = "0" + hours;
+    if (minutes.toString().length==1) minutes = "0" + minutes;
+    if (seconds.toString().length==1) seconds = "0" + seconds;
 
   return [days, hours, minutes, seconds];
 };
