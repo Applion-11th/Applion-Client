@@ -3,8 +3,13 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply } from "../components";
-
+import CountdownTimer from '../components/ddaytimer/CountdownTimer';
+import '../components/ddaytimer/timer.css';
 const Application = () => {
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+
   return (
     <>
       <Container>
@@ -15,9 +20,10 @@ const Application = () => {
           <FlexRow>
             <ImgContainer src={lion} />
             <Space margin="0px 10px 0px 0px" />
-            <DDate>D-7</DDate>
+            {/* <DDate>D-7</DDate> */}
             <Space margin="0px 20px 0px 0px" />
-            <DTime>17:30:40</DTime>
+            {/* <DTime>17:30:40</DTime> */}
+            <CountdownTimer targetDate={dateTimeAfterThreeDays} />
           </FlexRow>
           <Space height="30px" />
           <Form>
@@ -90,7 +96,8 @@ const Application = () => {
 
 export default Application;
 
-const ImgContainer = styled.img``;
+const ImgContainer = styled.img`
+  padding-top: 20px`;
 
 const ButtonContainer = styled.div`
   width: 100%;
