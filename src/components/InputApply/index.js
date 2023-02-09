@@ -7,15 +7,15 @@ export const InputApply = () => {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    if (text.length === 501) {
-      setCount(500);
+    if (text.length === 500) {
+      setCount(499);
     }
     setCount(text.length);
   }, [text]);
 
   const changeHandler = (e) => {
-    if (e.target.value.length > 500) {
-      setText(e.target.value.slice(0, 500));
+    if (e.target.value.length > 499) {
+      setText(e.target.value.slice(0, 499));
     }
     setText(e.target.value);
   };
@@ -24,7 +24,7 @@ export const InputApply = () => {
     <>
       <Flex>
         <InputApplyContainer
-          onChange={changeHandler}
+          onChange={(e) => changeHandler(e)}
           type="text"
           maxLength="500"
         />
