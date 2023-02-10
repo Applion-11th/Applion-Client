@@ -6,10 +6,7 @@ import { InputApply } from "../components";
 import CountdownTimer from "../components/ddaytimer/CountdownTimer";
 import "../components/ddaytimer/timer.css";
 const Application = () => {
-  // const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
-  // const NOW_IN_MS = new Date().getTime();
   const FINALDATE = "2023-03-10T23:59:59";
-  // NOW_IN_MS + THREE_DAYS_IN_MS;
 
   return (
     <>
