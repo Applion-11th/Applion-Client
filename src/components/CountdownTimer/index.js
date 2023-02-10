@@ -17,10 +17,8 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <Show>
       <DisplayDate value={days} isDanger={days <= 3} />
-      <DisplayTime value={hours} isDanger={false} />
-      <div className="timer">:</div>
-      <DisplayTime value={minutes} isDanger={false} />
-      <div className="timer">:</div>
+      <DisplayTime value={hours} isDanger={false} />:
+      <DisplayTime value={minutes} isDanger={false} />:
       <DisplayTime value={seconds} isDanger={false} />
     </Show>
   );
@@ -28,19 +26,21 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
 export const CountdownTimer = ({ targetDate }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
-
-  if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
-  } else {
-    return (
-      <ShowCounter
-        days={days}
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
-      />
-    );
-  }
+  const total = days + hours + minutes + seconds;
+  return (
+    <>
+      {total <= 0 ? (
+        <ExpiredNotice />
+      ) : (
+        <ShowCounter
+          days={days}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
+      )}
+    </>
+  );
 };
 
 const Show = styled.div`
@@ -50,4 +50,5 @@ const Show = styled.div`
   align-items: center;
   border: none;
   color: white;
+  font-family: Wakeup;
 `;
