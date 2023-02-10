@@ -5,6 +5,7 @@ import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
 const Application = () => {
   const FINALDATE = "2023-03-10T23:59:59";
+
   // 지원 마감 시 나올 페이지 별도로 필요할듯 (카운터 부분만 차지하는 것 말고)
 
   return (
