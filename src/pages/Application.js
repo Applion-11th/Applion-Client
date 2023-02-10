@@ -3,7 +3,7 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
-import "../components/ddaytimer/timer.css";
+import "../components/CountdownTimer/timer.css";
 const Application = () => {
   const FINALDATE = "2023-03-10T23:59:59";
 
