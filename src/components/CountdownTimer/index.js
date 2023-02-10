@@ -51,4 +51,5 @@ const Show = styled.div`
   border: none;
   color: white;
   font-family: Wakeup;
+  font-size: 36px;
 `;

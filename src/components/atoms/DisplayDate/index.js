@@ -6,8 +6,15 @@ import { Space } from "../Space";
 export const DisplayDate = ({ value, isDanger }) => {
   return (
     <>
-      {isDanger ? <CountdownRed /> : <Countdown />}
-      <Day>D-{value}</Day>
+      {isDanger ? (
+        <CountdownRed>
+          <Day>D-{value}</Day>
+        </CountdownRed>
+      ) : (
+        <Countdown>
+          <Day>D-{value}</Day>
+        </Countdown>
+      )}
       <Space margin="0px 20px 0px 0px" />
     </>
   );
