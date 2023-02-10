@@ -2,14 +2,18 @@ import React from "react";
 import { useCountdown } from "../../hooks";
 import { DisplayDate, DisplayTime } from "../atoms";
 import styled from "styled-components";
+import palette from "../../styles/colors";
 
 const ExpiredNotice = () => {
   return (
-    <div className="expired-notice">
-      <div>지원 마감되었습니다!</div>
-      <p>서강대학교 멋쟁이 사자처럼 11기에 지원해주셔서 감사합니다.</p>
-      <p>서류 발표는 3월 13일에 개별 문자 드리겠습니다.</p>
-    </div>
+    <Notice>
+      <NoticeTitle>지원 마감되었습니다!</NoticeTitle>
+      <NoticeBody>
+        서강대학교 멋쟁이 사자처럼 11기에 지원해주셔서 감사합니다.
+        <br />
+        서류 발표는 3월 13일에 개별 문자 드리겠습니다.
+      </NoticeBody>
+    </Notice>
   );
 };
 
@@ -52,4 +56,18 @@ const Show = styled.div`
   color: white;
   font-family: Wakeup;
   font-size: 36px;
+`;
+
+const Notice = styled.div`
+  text-align: left;
+`;
+
+const NoticeTitle = styled.div`
+  font-size: 40px;
+  font-weight: bold;
+  color: ${palette.red};
+`;
+
+const NoticeBody = styled.p`
+  font-size: 19px;
 `;
