@@ -1,7 +1,7 @@
-import React from 'react';
-import TimeDisplay from './TimeDisplay';
-import DateDisplay from './DateDisplay';
-import { useCountdown } from './useCountdown';
+import React from "react";
+import TimeDisplay from "./TimeDisplay";
+import DateDisplay from "./DateDisplay";
+import { useCountdown } from "../../hooks";
 
 const ExpiredNotice = () => {
   return (
@@ -16,10 +16,7 @@ const ExpiredNotice = () => {
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <div className="show-counter">
-      <a
-        rel="noopener noreferrer"
-        className="countdown-link"
-      >
+      <a rel="noopener noreferrer" className="countdown-link">
         <div id="dday">D -</div>
         {/* type={'Hours'} type={'Mins'}  type={'Seconds'}  */}
         <DateDisplay id="dday" value={days} isDanger={days <= 3} />
