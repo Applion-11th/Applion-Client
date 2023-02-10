@@ -1,6 +1,7 @@
 import React from "react";
 import { useCountdown } from "../../hooks";
 import { DisplayDate, DisplayTime } from "../atoms";
+import styled from "styled-components";
 
 const ExpiredNotice = () => {
   return (
@@ -14,16 +15,14 @@ const ExpiredNotice = () => {
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
-    <div className="show-counter">
-      <a rel="noopener noreferrer" className="countdown-link">
-        <DisplayDate value={days} isDanger={days <= 3} />
-        <DisplayTime value={hours} isDanger={false} />
-        <div className="timer">:</div>
-        <DisplayTime value={minutes} isDanger={false} />
-        <div className="timer">:</div>
-        <DisplayTime value={seconds} isDanger={false} />
-      </a>
-    </div>
+    <Show>
+      <DisplayDate value={days} isDanger={days <= 3} />
+      <DisplayTime value={hours} isDanger={false} />
+      <div className="timer">:</div>
+      <DisplayTime value={minutes} isDanger={false} />
+      <div className="timer">:</div>
+      <DisplayTime value={seconds} isDanger={false} />
+    </Show>
   );
 };
 
@@ -43,3 +42,12 @@ export const CountdownTimer = ({ targetDate }) => {
     );
   }
 };
+
+const Show = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: white;
+`;
