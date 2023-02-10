@@ -16,9 +16,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <div className="show-counter">
       <a rel="noopener noreferrer" className="countdown-link">
-        <div id="dday">D -</div>
-        {/* type={'Hours'} type={'Mins'}  type={'Seconds'}  */}
-        <DisplayDate id="dday" value={days} isDanger={days <= 3} />
+        <DisplayDate value={days} isDanger={days <= 3} />
         <DisplayTime value={hours} isDanger={false} />
         <div className="timer">:</div>
         <DisplayTime value={minutes} isDanger={false} />

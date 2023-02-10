@@ -17,7 +17,6 @@ const Application = () => {
           <FlexRow>
             <ImgContainer src={lion} />
             <Space margin="0px 10px 0px 0px" />
-            <Space margin="0px 20px 0px 0px" />
             <CountdownTimer targetDate={FINALDATE} />
           </FlexRow>
           <Space height="30px" />
@@ -118,6 +117,7 @@ const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 480px;
 `;
 
 const Form = styled.div`

@@ -1,11 +1,36 @@
 import React from "react";
-import "../ddaytimer/timer.css";
+import styled from "styled-components";
+import palette from "../../../styles/colors";
+import { Space } from "../Space";
+import "./timer.css";
 
-export const DisplayDate = ({ value, type, isDanger }) => {
+export const DisplayDate = ({ value, isDanger }) => {
   return (
-    <div className={isDanger ? "countdown danger" : "countdown"}>
-      <div id="dday">{value}</div>
-      <span>{type}</span>
-    </div>
+    <>
+      {isDanger ? <CountdownRed /> : <Countdown />}
+      <Day>D-{value}</Day>
+      <Space margin="0px 20px 0px 0px" />
+    </>
   );
 };
+
+const Day = styled.div`
+  font-family: Wakeup;
+  font-size: 55px;
+`;
+
+const CountdownRed = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${palette.red};
+  font-family: Wakeup;
+`;
+
+const Countdown = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${palette.white};
+  font-family: Wakeup;
+`;
