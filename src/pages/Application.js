@@ -2,14 +2,11 @@ import logo from "../assets/logoFull.svg";
 import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
-import { InputApply } from "../components";
-import CountdownTimer from '../components/ddaytimer/CountdownTimer';
-import '../components/ddaytimer/timer.css';
+import { InputApply, CountdownTimer } from "../components";
 const Application = () => {
-  // const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
-  // const NOW_IN_MS = new Date().getTime();
-  const FINALDATE = '2023-03-10T23:59:59';
-  // NOW_IN_MS + THREE_DAYS_IN_MS;
+  const FINALDATE = "2023-03-10T23:59:59";
+
+  // 지원 마감 시 나올 페이지 별도로 필요할듯 (카운터 부분만 차지하는 것 말고)
 
   return (
     <>
@@ -21,9 +18,6 @@ const Application = () => {
           <FlexRow>
             <ImgContainer src={lion} />
             <Space margin="0px 10px 0px 0px" />
-            {/* <DDate>D-7</DDate> */}
-            <Space margin="0px 20px 0px 0px" />
-            {/* <DTime>17:30:40</DTime> */}
             <CountdownTimer targetDate={FINALDATE} />
           </FlexRow>
           <Space height="30px" />
@@ -98,7 +92,8 @@ const Application = () => {
 export default Application;
 
 const ImgContainer = styled.img`
-  padding-top: 20px`;
+  padding-top: 20px;
+`;
 
 const ButtonContainer = styled.div`
   width: 100%;
@@ -123,16 +118,7 @@ const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
-
-const DDate = styled.div`
-  font-family: Wakeup;
-  font-size: 55px;
-`;
-
-const DTime = styled.div`
-  font-family: Wakeup;
-  font-size: 36px;
+  width: 480px;
 `;
 
 const Form = styled.div`

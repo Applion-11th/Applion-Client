@@ -53,6 +53,8 @@ const InputApplyContainer = styled.textarea`
   color: white;
   caret-color: white;
   margin: 15px 0px 10px 0px;
+  resize: none;
+
   &:focus {
     outline: none;
   }
