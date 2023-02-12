@@ -1,6 +1,6 @@
-import { Input, Button, Space} from "../components/atoms";
+import { Input, Button, Space } from "../components/atoms";
+import { SelectTrack } from "../components";
 import styled from "styled-components";
-import { SelectTrack } from "../components/atoms/SelectTrack";
 
 const Info = () => {
   return (
@@ -28,14 +28,11 @@ const Info = () => {
           <Text>전화번호</Text>
           <Input />
           <Space height="29px" />
-          <Text>GitHub 주소</Text>
-          <Input />
-          <Space height="29px" />
-          <Text>Velog 주소</Text>
-          <Input />
-          <Space height="29px" />
           <Text>지원 트랙 선택</Text>
-          <SelectTrack/>
+          <SelectTrack />
+          <Space height="29px" />
+          <Text>GitHub 주소 (선택)</Text>
+          <Input />
         </Form>
         <Space height="29px" />
         <Click
@@ -43,13 +40,7 @@ const Info = () => {
             console.log("submit");
           }}
         >
-          <Button
-            width="459px"
-            height="47px"
-            text="지원자 정보 기입 완료"
-            fontSize="18px"
-            borderRadius="10px"
-          />
+          <Button width="459px" height="47px" text="지원자 정보 기입 완료" fontSize="18px" borderRadius="10px" />
         </Click>
       </Flex>
     </>
