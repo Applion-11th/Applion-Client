@@ -1,6 +1,7 @@
 import { Button, Space } from "../components/atoms";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
+import logoFooter from "../assets/logoFooter.svg";
 import palette from "../styles/colors";
 
 const Main = () => {
@@ -51,7 +52,10 @@ const Main = () => {
         <Text>2번. 어쩌고 저쩌고</Text>
         <Text>3번. 어쩌고 저쩌고</Text>
       </Section4>
-      <Section5></Section5>
+      <Section5>
+        <LogoFooterContainer src={logoFooter} />
+        <Space height="25vh" />
+      </Section5>
     </>
   );
 };
@@ -148,7 +152,12 @@ const Section4 = styled.div`
 const Section5 = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   height: 100vh;
+`;
+
+const LogoFooterContainer = styled.img`
+  width: 524px;
+  height: 132px;
 `;
