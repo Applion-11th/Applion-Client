@@ -1,7 +1,15 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 
 const Register = () => {
+
+  const navigate = useNavigate();
+
+  const goToInfo = () => {
+    navigate('/info');
+  };
+  
   return (
     <>
       <Space height="50px" />
@@ -22,9 +30,7 @@ const Register = () => {
         </Form>
         <Space height="29px" />
         <Click
-          onClick={() => {
-            console.log("login");
-          }}
+          onClick={goToInfo}
         >
           <Button
             width="459px"

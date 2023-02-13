@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Header } from "./components";
 import styled from "styled-components";
@@ -21,7 +21,7 @@ const App = () => {
       {isPC ? (
         <>
           <BrowserRouter>
-            {window.location.pathname !== "/" ? <Header /> : <></>}
+            {window.location.pathname !== "/" ? <Header />: <></>}
             <Routes>
               <Route path="/" exact element={<Main />} />
               <Route path="/login" element={<Login />} />
@@ -43,3 +43,4 @@ export default App;
 const Text = styled.div`
   font-size: 50px;
 `;
+

@@ -25,7 +25,7 @@ const Info = () => {
           <Text>전공</Text>
           <Input />
           <Space height="29px" />
-          <Text>전화번호</Text>
+          <Text>전화번호 (ex : 010 - 1234 - 5678)</Text>
           <Input />
           <Space height="29px" />
           <Text>지원 트랙 선택</Text>
