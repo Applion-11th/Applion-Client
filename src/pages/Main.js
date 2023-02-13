@@ -125,7 +125,6 @@ const ButtonContainer = styled.div`
   top: 47px;
   right: 90px;
   position: fixed;
-  pointer: cursor;
 `;
 
 const TextIntroContainer = styled.div`
