@@ -27,7 +27,7 @@ const Main = () => {
   return (
     <>
       <ButtonContainer>
-        <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
+          <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
       </ButtonContainer>
       <Section1>
         <FadeInSection>
@@ -125,6 +125,7 @@ const ButtonContainer = styled.div`
   top: 47px;
   right: 90px;
   position: fixed;
+  pointer: cursor;
 `;
 
 const TextIntroContainer = styled.div`
