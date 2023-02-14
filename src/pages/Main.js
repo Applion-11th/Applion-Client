@@ -1,11 +1,17 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
 import palette from "../styles/colors";
 
 const Main = () => {
+  const navigate = useNavigate();
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
   const FadeInSection = (props) => {
     const [isVisible, setVisible] = useState(false);
     const domRef = useRef();

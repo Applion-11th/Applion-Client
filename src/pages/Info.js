@@ -1,12 +1,15 @@
 import { Input, Button, Space } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Info = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Space height="30px" />
       <Flex>
+      <FinalMent>지원서는 2023년 3월 9일 11시 59분까지 로그인 후 수정 가능합니다.</FinalMent>
         <Title>지원자 정보</Title>
         <Space height="10px" />
         <Description>
@@ -41,6 +44,7 @@ const Info = () => {
           }}
         >
           <Button width="459px" height="47px" text="지원자 정보 기입 완료" fontSize="18px" borderRadius="10px" />
+          <Space height="29px" />
         </Click>
       </Flex>
     </>
@@ -79,3 +83,8 @@ const Form = styled.div`
 `;
 
 const Click = styled.div``;
+
+const FinalMent = styled.div` 
+text-align: center;
+margin-bottom: 30px;
+`
