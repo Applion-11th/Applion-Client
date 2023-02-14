@@ -1,11 +1,52 @@
 import { Button, Space } from "../components/atoms";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { debounce } from 'lodash';
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
 import palette from "../styles/colors";
-
+import mainanimation from "../assets/mainanimation.mkv";
 const Main = () => {
+  const VideoPlayer = () => {
+    const playbackConst = 850;
+    const setHeightRef = useRef(null);
+    const vidRef = useRef(null);
+    const frameNumberRef = useRef(0);
+
+    useLayoutEffect(() => {
+      const setHeight = setHeightRef.current;
+      const vid = vidRef.current;
+      const handleScroll = debounce(() => {
+        const frameNumber = window.pageYOffset / playbackConst;
+        vidRef.current.currentTime = frameNumber;
+        frameNumberRef.current = frameNumber;        
+      }, 16.7);
+  
+      window.addEventListener('scroll', handleScroll, {Passive: true});
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    }, []);
+  
+    return (
+      <div >
+        <div ref={setHeightRef}></div>
+        <video
+          tabIndex="0"
+          preload="metadata"
+          style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "90vh", transform: "translateZ(0)" }}
+          ref={vidRef}
+        >
+          <source
+            type='video/mp4;'
+            src={mainanimation}
+          />
+        </video>
+      </div>
+    );
+  }
+
   const FadeInSection = (props) => {
     const [isVisible, setVisible] = useState(false);
     const domRef = useRef();
@@ -26,6 +67,7 @@ const Main = () => {
 
   return (
     <>
+    <VideoPlayer></VideoPlayer>
       <ButtonContainer>
         <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
       </ButtonContainer>
