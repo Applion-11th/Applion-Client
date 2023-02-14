@@ -1,7 +1,15 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
+import { Radio } from "../components";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+  const navigate = useNavigate();
+  const goToInfo = () => {
+    navigate('/info');
+  };
+
   return (
     <>
       <Space height="50px" />
@@ -20,11 +28,10 @@ const Register = () => {
           <Text>verify password</Text>
           <InputPwd />
         </Form>
-        <Space height="29px" />
+        <Radio>개인 정보 동의</Radio>
+        {/* <Space height="29px" /> */}
         <Click
-          onClick={() => {
-            console.log("login");
-          }}
+          onClick={goToInfo}
         >
           <Button
             width="459px"
@@ -35,11 +42,13 @@ const Register = () => {
           />
         </Click>
       </Flex>
+      <Space height="50px" />
     </>
   );
 };
 
 export default Register;
+
 
 const Title = styled.div`
   font-weight: 700;
@@ -70,3 +79,4 @@ const Form = styled.div`
 `;
 
 const Click = styled.div``;
+

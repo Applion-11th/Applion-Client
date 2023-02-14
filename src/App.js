@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
+import Complete from "./pages/Complete";
 
 const App = () => {
   const isPC = useMediaQuery({
@@ -21,11 +22,12 @@ const App = () => {
       {isPC ? (
         <>
           <BrowserRouter>
-            {window.location.pathname !== "/" ? <Header /> : <></>}
+            {window.location.pathname !== "/" ? <Header />: <></>}
             <Routes>
               <Route path="/" exact element={<Main />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/complete" element={<Complete />} />
               <Route path="/info" element={<Info />} />
               <Route path="/apply" element={<Application />} />
             </Routes>
@@ -43,3 +45,5 @@ export default App;
 const Text = styled.div`
   font-size: 50px;
 `;
+
+
