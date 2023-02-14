@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.svg";
 import styled from "styled-components";
 import { Space } from "../atoms";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
 

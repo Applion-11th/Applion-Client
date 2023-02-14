@@ -3,8 +3,11 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
+import { useNavigate } from "react-router-dom";
+
 const Application = () => {
-  const FINALDATE = "2023-03-10T23:59:59";
+  const FINALDATE = "2023-03-09T23:59:59";
+  const navigate = useNavigate();
 
   // 지원 마감 시 나올 페이지 별도로 필요할듯 (카운터 부분만 차지하는 것 말고)
 
@@ -54,6 +57,7 @@ const Application = () => {
             <InputApply />
           </Form>
         </Flex>
+        <FinalMent>지원서 제출 버튼을 누르셔도 2023년 3월 9일까지 로그인 후 수정 가능합니다.</FinalMent>
         <ButtonContainer>
           <Click
             onClick={() => {
@@ -62,7 +66,7 @@ const Application = () => {
           >
             <Button
               text="임시 저장"
-              width="130px"
+              width="150px"
               height="59px"
               fontSize="18px"
               borderRadius="20px"
@@ -75,8 +79,8 @@ const Application = () => {
             }}
           >
             <Button
-              text="작성 완료"
-              width="130px"
+              text="지원서 제출하기"
+              width="150px"
               height="59px"
               fontSize="18px"
               borderRadius="20px"
@@ -84,7 +88,6 @@ const Application = () => {
           </Click>
         </ButtonContainer>
       </Container>
-      <Space height="50px" />
     </>
   );
 };
@@ -99,7 +102,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 const Container = styled.div`
@@ -134,3 +137,8 @@ const Text = styled.div`
 `;
 
 const Click = styled.div``;
+
+const FinalMent = styled.div` 
+text-align: center;
+margin-bottom: 30px;
+`
