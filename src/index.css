@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Pretendard-Regular", "D2Coding", "Wakeup";
+  font-family: "Pretendard", "D2Coding", "Wakeup";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
@@ -8,6 +8,5 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    "D2Coding", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", "D2Coding", monospace;
 }
