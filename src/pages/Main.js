@@ -124,8 +124,10 @@ const Main = () => {
               <TextBold>
                 웹 개발 기본 과정을 <br /> 함께 배웁니다
               </TextBold>
+              <Space height="20px" />
               <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
               <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
+              <Space height="10px" />
               <Click onClick={console.log("open techit")}>
                 <Button text="TECHIT 둘러보기" fontSize="18px" width="160px" height="44px" borderRadius="16px" />
               </Click>
@@ -150,9 +152,10 @@ const Main = () => {
               </Textboxsmall>
               <TextboxBold>03 | 함께 아이디어를 공유합니다</TextboxBold>
               <Textboxsmall>
-                다른 사람들은 어떤 서비스를 만들었을가요?
+                다른 사람들은 어떤 서비스를 만들었을까요?
                 <br />
                 서로의 생각을 나누면서 성장하는 시간을 가져봅시다.
+                <Space height="10px" />
                 <SmallList>nn개 대학의 멋사인들과 함께하는 해커톤</SmallList>
                 <SmallList>서강대학교 멋사만의 해커톤 / 복커톤</SmallList>
                 <SmallList>서강대, 연세대, 이화여대가 함께하는 신촌톤</SmallList>
@@ -335,7 +338,8 @@ const Textbox = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding-left: 2vw;
+  padding-top: 1vw;
+  padding-left: 3vw;
 `;
 
 const TextboxBold = styled.div`
@@ -347,10 +351,11 @@ const TextboxBold = styled.div`
 
 const Textboxsmall = styled.div`
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 125%;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  margin-left: 54px;
 `;
 const MaximumContainer = styled.div`
   width: 100vw;
