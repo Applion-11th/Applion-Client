@@ -74,13 +74,12 @@ const Main = () => {
       <Section1>
         <FadeInSection>
           <CenterContainer>
-            <Space height="81px" />
+            <Space height="100px" />
             <LogoContainer src={logoFull} />
+            <Space height="50px" />
             <TextIntro>Welcome to Sogang Likelion!</TextIntro>
             <TextIntroContainer>
-              <TextIntro>Let's begin</TextIntro>
-              <Space margin="0px 10px 0px 0px" />
-              <TextIntroRed>the adventure</TextIntroRed>
+              <TextIntro>Let's begin the adventure</TextIntro>
             </TextIntroContainer>
           </CenterContainer>
         </FadeInSection>
@@ -88,6 +87,7 @@ const Main = () => {
       <Section2>
         <FadeInSection>
           <RowContainer>
+            <Space margin="200px 600px 0px 0px" />
             <TextContainer>
               <TextBold>Possibility to Reality</TextBold>
               <Space height="25px" />
@@ -99,7 +99,6 @@ const Main = () => {
                 IT분야의 TECH 리더를 양성합니다.
               </Text>
             </TextContainer>
-            <Space margin="200px 50px 0px 0px" />
           </RowContainer>
         </FadeInSection>
       </Section2>
@@ -109,6 +108,7 @@ const Main = () => {
             <Space margin="0px 60px 0px 0px" />
             <TimeTable>
               <TextBold>지원 일정</TextBold>
+              <Space height="20px" />
               <TextList>서류 지원 : 2023.02.20 ~ 2023.03.09</TextList>
               <TextList>서류 발표 : 2023.03.13</TextList>
               <TextList>면접 : 2023.03.15 ~ 2023.03.17</TextList>
@@ -121,10 +121,10 @@ const Main = () => {
         <FadeInSection>
           <MaximumContainer>
             <TextContainer>
-              <TextBold>
-                웹 개발 기본 과정을 <br /> 함께 배웁니다
-              </TextBold>
-              <Space height="20px" />
+              <TextBold>웹 개발 기본 과정을</TextBold>
+              <Space height="10px" />
+              <TextBold>함께 배웁니다</TextBold>
+              <Space height="25px" />
               <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
               <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
               <Space height="10px" />
@@ -176,17 +176,14 @@ const Main = () => {
 
 export default Main;
 
-const LogoContainer = styled.img`
-  width: 767px;
-  height: 132px;
-`;
+const LogoContainer = styled.img``;
 
 const Section1 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 120vh;
+  height: 130vh;
   width: 100%;
 `;
 
@@ -200,7 +197,7 @@ const CenterContainer = styled.div`
 
 const ButtonContainer = styled.div`
   top: 40px;
-  right: 90px;
+  right: 50px;
   position: fixed;
   z-index: 10;
 `;
@@ -213,6 +210,7 @@ const TextIntroContainer = styled.div`
 const TextIntro = styled.div`
   font-family: D2Coding;
   font-size: 32px;
+  font-weight: bold;
 `;
 
 const TextIntroRed = styled.div`
@@ -226,8 +224,8 @@ const Section2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
-  height: 120vh;
+  align-items: center;
+  height: 130vh;
   width: 100%;
 `;
 
@@ -321,13 +319,18 @@ const Click = styled.div``;
 
 const Video = styled.video`
   position: fixed;
-  width: 100%;
-  height: 85vh;
-  top: 20%;
+  width: 100vw;
   transform: translateZ(0);
 `;
 
-const Videowrapper = styled.div``;
+const Videowrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+`;
 
 const Textbox = styled.div`
   background: rgba(87, 49, 49, 0.7);
