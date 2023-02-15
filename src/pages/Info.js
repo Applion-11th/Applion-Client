@@ -9,7 +9,7 @@ const Info = () => {
     <>
       <Space height="30px" />
       <Flex>
-      <FinalMent>지원서는 2023년 3월 9일 11시 59분까지 로그인 후 수정 가능합니다.</FinalMent>
+        <FinalMent>지원서는 2023년 3월 9일 11시 59분까지 로그인 후 수정 가능합니다.</FinalMent>
         <Title>지원자 정보</Title>
         <Space height="10px" />
         <Description>
@@ -84,7 +84,7 @@ const Form = styled.div`
 
 const Click = styled.div``;
 
-const FinalMent = styled.div` 
-text-align: center;
-margin-bottom: 30px;
-`
+const FinalMent = styled.div`
+  text-align: center;
+  margin-bottom: 30px;
+`;
