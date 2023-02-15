@@ -1,49 +1,50 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { debounce } from 'lodash';
+import { debounce } from "lodash";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
 import palette from "../styles/colors";
 import mainanimation from "../assets/mainanimation.mkv";
+
 const Main = () => {
-const VideoPlayer = () => {
-  const playbackConst = 850;
-  const setHeightRef = useRef(null);
-  const vidRef = useRef(null);
-  const frameNumberRef = useRef(0);
+  const VideoPlayer = () => {
+    const playbackConst = 850;
+    const setHeightRef = useRef(null);
+    const vidRef = useRef(null);
+    const frameNumberRef = useRef(0);
 
-  useLayoutEffect(() => {
-    const handleScroll = debounce(() => {
-      const frameNumber = window.pageYOffset / playbackConst;
-      vidRef.current.currentTime = frameNumber;
-      frameNumberRef.current = frameNumber;
-      const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (window.pageYOffset >= totalScrollHeight) {
-        vidRef.current.currentTime = vidRef.current.duration;
-      }
-    }, 16.7);
+    useLayoutEffect(() => {
+      const handleScroll = debounce(() => {
+        const frameNumber = window.pageYOffset / playbackConst;
+        vidRef.current.currentTime = frameNumber;
+        frameNumberRef.current = frameNumber;
+        const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (window.pageYOffset >= totalScrollHeight) {
+          vidRef.current.currentTime = vidRef.current.duration;
+        }
+      }, 16.7);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
 
-  return (
-    <Videowrapper>
-      <Video ref={vidRef} loop muted>
-        <source type="video/mp4;" src={mainanimation} />
-      </Video>
-    </Videowrapper>
-  );
-};
+    return (
+      <Videowrapper>
+        <Video ref={vidRef} loop muted>
+          <source type="video/mp4;" src={mainanimation} />
+        </Video>
+      </Videowrapper>
+    );
+  };
 
   const navigate = useNavigate();
   const goToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   const FadeInSection = (props) => {
@@ -66,9 +67,9 @@ const VideoPlayer = () => {
 
   return (
     <>
-    <VideoPlayer/>
+      <VideoPlayer />
       <ButtonContainer>
-          <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
+        <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
       </ButtonContainer>
       <Section1>
         <FadeInSection>
@@ -120,32 +121,42 @@ const VideoPlayer = () => {
         <FadeInSection>
           <MaximumContainer>
             <TextContainer>
-            <TextBold>웹 개발 기본 과정을 <br/> 함께 배웁니다</TextBold>
-            <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
-            <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
-            <Click onClick={console.log("open techit")}>
-              <Button text="TECHIT 둘러보기" fontSize="18px" width="160px" height="44px" borderRadius="16px" />
-            </Click>
+              <TextBold>
+                웹 개발 기본 과정을 <br /> 함께 배웁니다
+              </TextBold>
+              <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
+              <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
+              <Click onClick={console.log("open techit")}>
+                <Button text="TECHIT 둘러보기" fontSize="18px" width="160px" height="44px" borderRadius="16px" />
+              </Click>
             </TextContainer>
             <Textbox>
-            <TextboxBold>01 | 서비스 구현에 필요한 기본적인 개발지식을 배웁니다</TextboxBold>
-            <Textboxsmall>프론트엔드, 백엔드, 풀스택 개발자까지. <br/>HTML/CSS, Javascript, React, Python, Django</Textboxsmall>
-            <TextboxBold>02 | 팀을 이뤄 서비스를 만듭니다</TextboxBold>
-            <Textboxsmall>
-              만들고 싶은 서비스가 있으신가요?<br/>
-              팀원들과 생각을 나누고, Github에서 협업하며<br/>
-              가치있는 서비스를 만들어보세요.<br/>
-              여러분의 서비스가 사용에게 닿는 순간까지, 멋사가 돕겠습니다.<br/>
-              아이디에이션 &gt; 기획 &gt; 개발 &gt; 배포 &gt; 유저관리
-            </Textboxsmall>
-            <TextboxBold>03 | 함께 아이디어를 공유합니다</TextboxBold>
-            <Textboxsmall>
-            다른 사람들은 어떤 서비스를 만들었을가요?<br/>
-            서로의 생각을 나누면서 성장하는 시간을 가져봅시다.
-            <SmallList>nn개 대학의 멋사인들과 함께하는 해커톤</SmallList>
-            <SmallList>서강대학교 멋사만의 해커톤 / 복커톤</SmallList>
-            <SmallList>서강대, 연세대, 이화여대가 함께하는 신촌톤</SmallList>
-            </Textboxsmall>
+              <TextboxBold>01 | 서비스 구현에 필요한 기본적인 개발지식을 배웁니다</TextboxBold>
+              <Textboxsmall>
+                프론트엔드, 백엔드, 풀스택 개발자까지. <br />
+                HTML/CSS, Javascript, React, Python, Django
+              </Textboxsmall>
+              <TextboxBold>02 | 팀을 이뤄 서비스를 만듭니다</TextboxBold>
+              <Textboxsmall>
+                만들고 싶은 서비스가 있으신가요?
+                <br />
+                팀원들과 생각을 나누고, Github에서 협업하며
+                <br />
+                가치있는 서비스를 만들어보세요.
+                <br />
+                여러분의 서비스가 사용에게 닿는 순간까지, 멋사가 돕겠습니다.
+                <br />
+                아이디에이션 &gt; 기획 &gt; 개발 &gt; 배포 &gt; 유저관리
+              </Textboxsmall>
+              <TextboxBold>03 | 함께 아이디어를 공유합니다</TextboxBold>
+              <Textboxsmall>
+                다른 사람들은 어떤 서비스를 만들었을가요?
+                <br />
+                서로의 생각을 나누면서 성장하는 시간을 가져봅시다.
+                <SmallList>nn개 대학의 멋사인들과 함께하는 해커톤</SmallList>
+                <SmallList>서강대학교 멋사만의 해커톤 / 복커톤</SmallList>
+                <SmallList>서강대, 연세대, 이화여대가 함께하는 신촌톤</SmallList>
+              </Textboxsmall>
             </Textbox>
           </MaximumContainer>
         </FadeInSection>
@@ -188,6 +199,7 @@ const ButtonContainer = styled.div`
   top: 40px;
   right: 90px;
   position: fixed;
+  z-index: 10;
 `;
 
 const TextIntroContainer = styled.div`
@@ -243,7 +255,7 @@ const TextList = styled.li`
 const SmallList = styled.li`
   font-size: 15px;
   font-weight: 400;
-`
+`;
 
 const Section3 = styled.div`
   display: flex;
@@ -305,15 +317,14 @@ const FadeContainer = styled.div`
 const Click = styled.div``;
 
 const Video = styled.video`
-    position: fixed;
-    width: 100%;
-    height: 85vh;
-    top: 20%;
-    transform: translateZ(0);
-`
+  position: fixed;
+  width: 100%;
+  height: 85vh;
+  top: 20%;
+  transform: translateZ(0);
+`;
 
-const Videowrapper = styled.div`
-`
+const Videowrapper = styled.div``;
 
 const Textbox = styled.div`
   background: rgba(87, 49, 49, 0.7);
@@ -325,8 +336,7 @@ const Textbox = styled.div`
   align-items: flex-start;
   flex-direction: column;
   padding-left: 2vw;
-`
-
+`;
 
 const TextboxBold = styled.div`
   font-family: Pretendard;
@@ -335,18 +345,17 @@ const TextboxBold = styled.div`
   margin-bottom: 13px;
 `;
 
-
 const Textboxsmall = styled.div`
-font-family: Pretendard;
-font-size: 15px;
-font-weight: 400;
-line-height: 125%;
-margin-bottom: 16px;
-`
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 125%;
+  margin-bottom: 16px;
+`;
 const MaximumContainer = styled.div`
-width: 100vw;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-around;
-`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
