@@ -1,4 +1,4 @@
-import { Input, Button, Space } from "../components/atoms";
+import { Input, InputSmall, Button, Space } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const Info = () => {
         <Space height="10px" />
         <Form>
           <Text>이름</Text>
-          <Input />
+          <InputSmall />
           <Space height="10px" />
           <Text>2023학년도 1학기 기준 학기 (예시: 5학기)</Text>
           <Input />
