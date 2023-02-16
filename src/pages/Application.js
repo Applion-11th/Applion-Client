@@ -3,11 +3,22 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
+import {useState, useEffect} from "react";
 
 const Application = () => {
   const FINALDATE = "2023-03-09T23:59:59";
   const navigate = useNavigate();
+  const gotoLogin = () => {
+    navigate('/login');
+  }
+
+  useEffect(() => {
+    if (!localStorage.getItem('refresh_token')){
+      console.log('working properly');
+      gotoLogin();
+    }
+  })
 
   // 지원 마감 시 나올 페이지 별도로 필요할듯 (카운터 부분만 차지하는 것 말고)
 
@@ -78,6 +89,7 @@ const Application = () => {
               console.log("submit");
             }}
           >
+            <Link to="/Complete">
             <Button
               text="지원서 제출하기"
               width="150px"
@@ -85,6 +97,7 @@ const Application = () => {
               fontSize="18px"
               borderRadius="20px"
             />
+            </Link>
           </Click>
         </ButtonContainer>
       </Container>
