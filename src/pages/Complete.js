@@ -5,6 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 const Complete = () => {
   const navigate = useNavigate();
+  const gotoApplication = () => {
+    navigate("/apply");
+  };
+  const gotoMain = () => {
+    navigate("/");
+  };
   return (
     <>
       <Flex>
@@ -35,8 +41,12 @@ const Complete = () => {
         </Description>
         <Space height="20px" />
         <ButtonContainer>
-          <Button width="167px" height="47px" text="홈으로 돌아가기" fontSize="16px" borderRadius="10px" />
-          <Button width="167px" height="47px" text="지원서 수정하기" fontSize="16px" borderRadius="10px" />
+          <Click onClick={gotoMain}>
+            <Button width="167px" height="47px" text="홈으로 돌아가기" fontSize="16px" borderRadius="10px" />
+          </Click>
+          <Click onClick={gotoApplication}>
+            <Button width="167px" height="47px" text="지원서 수정하기" fontSize="16px" borderRadius="10px" />
+          </Click>
         </ButtonContainer>
       </Flex>
     </>
@@ -89,3 +99,5 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   gap: 80px;
 `;
+
+const Click = styled.div``;
