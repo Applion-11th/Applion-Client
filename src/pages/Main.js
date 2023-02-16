@@ -1,7 +1,7 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
@@ -44,7 +44,9 @@ const Main = () => {
   const navigate = useNavigate();
 
   const gotoApply = () => {
-    navigate("/apply");
+    {
+      localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
+    }
   };
 
   const FadeInSection = (props) => {
@@ -67,6 +69,7 @@ const Main = () => {
   const openTech = () => {
     console.log("open tech");
   };
+
   return (
     <>
       <VideoPlayer />
