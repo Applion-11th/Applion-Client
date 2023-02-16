@@ -3,9 +3,15 @@ import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Login = () => {
+  useEffect(() => {
+    if (localStorage.getItem("refresh_token")) {
+      navigate("/apply");
+    }
+  });
+
   const [info, setInfo] = useState({
     email: "",
     pw: "",
@@ -17,7 +23,6 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}login/`, {
         email: info.email,
@@ -33,7 +38,7 @@ const Login = () => {
         console.log(error.request.response);
       });
   };
-  console.log(process.env.REACT_APP_KAKAO_URL);
+
   const handleChange = (e) => {
     const value = e.target.value;
     const id = e.target.id;
