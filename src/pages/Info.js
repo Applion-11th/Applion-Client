@@ -18,8 +18,16 @@ const Info = () => {
         </Description>
         <Space height="10px" />
         <Form>
-          <Text>이름</Text>
-          <InputSmall />
+          <FlexRow>
+            <FlexCol>
+              <Text>이름</Text>
+              <InputSmall />
+            </FlexCol>
+            <FlexCol>
+              <Text>학번</Text>
+              <InputSmall />
+            </FlexCol>
+          </FlexRow>
           <Space height="10px" />
           <Text>2023학년도 1학기 기준 학기 (예시: 5학기)</Text>
           <Input />
@@ -79,3 +87,15 @@ const Form = styled.div`
 `;
 
 const Click = styled.div``;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const FlexCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
