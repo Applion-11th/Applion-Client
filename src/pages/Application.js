@@ -4,8 +4,8 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
-import { useNavigate, Link} from "react-router-dom";
-import {useState, useEffect} from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Application = () => {
   const FINALDATE = "2023-03-09T23:59:59";
@@ -16,15 +16,15 @@ const Application = () => {
   const currDate = new Date().toLocaleDateString();
   const dueDate = new Date(2023, 2, 10).toLocaleDateString();
   const gotoLogin = () => {
-    navigate('/login');
-  }
+    navigate("/login");
+  };
 
   useEffect(() => {
-    if (!localStorage.getItem('refresh_token')){
-      console.log('working properly');
+    if (!localStorage.getItem("refresh_token")) {
+      console.log("working properly");
       gotoLogin();
     }
-  })
+  });
 
   return (
     <>
@@ -125,7 +125,14 @@ const Application = () => {
                 console.log("submit");
               }}
             >
-              <Button text="지원서 제출하기 >" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
+              <Button
+                text="지원서 제출하기 >"
+                width="150px"
+                height="59px"
+                fontSize="18px"
+                borderRadius="20px"
+                type="submit"
+              />
             </Click>
           </ButtonContainer>
           <Space height="40px" />
