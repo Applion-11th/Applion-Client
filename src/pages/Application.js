@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
 import { useNavigate } from "react-router-dom";
-import palette from "../styles/colors";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const Application = () => {
   const FINALDATE = "2023-03-09T23:59:59";
@@ -58,29 +58,30 @@ const Application = () => {
           </Form>
           <Form>
             <FlexEnd>
-              <Text>+ Github 계정 (선택)</Text>
+              <Text>+ Github 계정 링크 (선택)</Text>
               <Text>*계정 정보는 서류 평가 점수에 반영되지 않습니다.</Text>
             </FlexEnd>
             <InputGit />
           </Form>
         </Flex>
+        <Space height="40px" />
         <ButtonContainer>
           <Click
             onClick={() => {
               console.log("save");
             }}
           >
-            <Button text="임시 저장" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
+            <Button text="< 내 정보 수정하기" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
           </Click>
-          <Space margin="0px 21px 0px 0px" />
           <Click
             onClick={() => {
               console.log("submit");
             }}
           >
-            <Button text="지원서 제출하기" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
+            <Button text="지원서 제출하기 >" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
           </Click>
         </ButtonContainer>
+        <Space height="40px" />
       </Container>
     </>
   );
@@ -96,7 +97,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 const Container = styled.div`
