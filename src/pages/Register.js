@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/info");
+  };
 
   return (
     <>
@@ -13,7 +16,7 @@ const Register = () => {
         <Space height="10px" />
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
-        <Form>
+        <Form action="#" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
           <Input />
           <Space height="29px" />

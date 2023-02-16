@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputPwd = () => {
-  return <InputPwdContainer />;
+  return <InputPwdContainer required />;
 };
 
 const InputPwdContainer = styled.input.attrs((props) => ({ type: "password" }))`
