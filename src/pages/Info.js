@@ -47,7 +47,14 @@ const Info = () => {
         </Form>
         <Space height="18px" />
         <Click onClick={gotoApplication}>
-          <Button width="459px" height="47px" text="지원자 정보 기입 완료" fontSize="18px" borderRadius="10px" />
+          <Button
+            width="459px"
+            height="47px"
+            text="지원자 정보 기입 완료"
+            fontSize="18px"
+            borderRadius="10px"
+            type="submit"
+          />
           <Space height="10px" />
         </Click>
       </Flex>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputSmall = () => {
-  return <InputSmallContainer />;
+  return <InputSmallContainer required />;
 };
 
 const InputSmallContainer = styled.input`

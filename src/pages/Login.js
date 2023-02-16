@@ -1,14 +1,13 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
   const navigate = useNavigate();
 
   const goToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
@@ -30,25 +29,11 @@ const Login = () => {
             console.log("login");
           }}
         >
-          <Button
-            width="459px"
-            height="47px"
-            text="로그인"
-            fontSize="18px"
-            borderRadius="10px"
-          />
+          <Button width="459px" height="47px" text="로그인" fontSize="18px" borderRadius="10px" type="submit" />
         </Click>
         <Space height="29px" />
-        <Click
-          onClick={goToRegister}
-        >
-        <Button
-          width="459px"
-          height="47px"
-          text="회원가입 하러가기"
-          fontSize="18px"
-          borderRadius="10px"
-          />
+        <Click onClick={goToRegister}>
+          <Button width="459px" height="47px" text="회원가입 하러가기" fontSize="18px" borderRadius="10px" />
         </Click>
         <Space height="29px" />
         <KaKaoLoginBtn>
