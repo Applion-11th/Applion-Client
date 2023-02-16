@@ -82,7 +82,7 @@ const Flex = styled.div`
   align-items: center;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   justify-content: flex-start;
 `;
 

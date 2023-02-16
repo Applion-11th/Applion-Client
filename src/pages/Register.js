@@ -1,11 +1,18 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
+  const [agreement, setAgreement] = useState(false);
   const navigate = useNavigate();
   const goToInfo = () => {
-    navigate("/info");
+    agreement ? navigate("/info") : alert("개인정보 수집 및 이용에 동의해주세요!");
+  };
+
+  const handleChange = (e) => {
+    setAgreement(e.target.checked);
+    console.log(agreement);
   };
 
   return (
@@ -28,7 +35,7 @@ const Register = () => {
           <Space height="24px" />
           <AgreeContainer>
             <Agree>
-              <input required type="checkbox" />
+              <input id="agree" type="checkbox" onChange={handleChange} />
               개인정보 수집 및 이용 동의서
             </Agree>
           </AgreeContainer>
@@ -69,7 +76,7 @@ const Flex = styled.div`
   align-items: center;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   justify-content: flex-start;
 `;
 
