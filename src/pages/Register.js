@@ -1,12 +1,46 @@
+import { useState } from "react";
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
+  // const [email, setEmail] = useState("");
+  // const [pw1, setPw1] = useState("");
+  // const [pw2, setPw2] = useState("");
+  const [info, setInfo] = useState({
+    email: "",
+    pw1: "",
+    pw2: "",
+  });
+
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate("/info");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/user/dj-rest-auth/registration/", {
+        email: info.email,
+        password1: info.password1,
+        password2: info.password2,
+      })
+      .then((response) => {
+        if (response.data.code === 201) {
+          navigate("/info");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+
+  const handleEmail = (value) => {
+    setInfo({
+      ...info,
+      email: value,
+    });
+  };
+
+  axios.defaults.withCredentials = true;
 
   return (
     <>
@@ -16,9 +50,9 @@ const Register = () => {
         <Space height="10px" />
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
-        <Form action="#" onSubmit={handleSubmit}>
+        <Form action="" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
-          <Input />
+          <Input onChange={handleEmail} value={info.email} />
           <Space height="29px" />
           <Text>password</Text>
           <InputPwd />
