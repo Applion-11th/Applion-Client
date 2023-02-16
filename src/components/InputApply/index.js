@@ -23,11 +23,7 @@ export const InputApply = () => {
   return (
     <>
       <Flex>
-        <InputApplyContainer
-          onChange={(e) => changeHandler(e)}
-          type="text"
-          maxLength="500"
-        />
+        <InputApplyContainer required onChange={(e) => changeHandler(e)} maxLength="500" />
         <CountContainer>{count}/500자</CountContainer>
         <Space height="20px" />
       </Flex>
