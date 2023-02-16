@@ -11,7 +11,6 @@ import mainanimation from "../assets/mainanimation.mkv";
 const Main = () => {
   const VideoPlayer = () => {
     const playbackConst = 850;
-    const setHeightRef = useRef(null);
     const vidRef = useRef(null);
     const frameNumberRef = useRef(0);
 
@@ -43,8 +42,9 @@ const Main = () => {
   };
 
   const navigate = useNavigate();
+
   const gotoApply = () => {
-    navigate('/apply');
+    navigate("/apply");
   };
 
   const FadeInSection = (props) => {
@@ -55,7 +55,6 @@ const Main = () => {
         entries.forEach((entry) => setVisible(entry.isIntersecting));
       });
       observer.observe(domRef.current);
-      return () => observer.unobserve(domRef.current);
     }, []);
 
     return (
@@ -65,12 +64,15 @@ const Main = () => {
     );
   };
 
+  const openTech = () => {
+    console.log("open tech");
+  };
   return (
     <>
       <VideoPlayer />
       <ButtonContainer>
         <Click onClick={gotoApply}>
-        <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
+          <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
         </Click>
       </ButtonContainer>
       <Section1>
@@ -130,7 +132,7 @@ const Main = () => {
               <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
               <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
               <Space height="10px" />
-              <Click onClick={console.log("open techit")}>
+              <Click onClick={openTech}>
                 <Button text="TECHIT 둘러보기" fontSize="18px" width="160px" height="44px" borderRadius="16px" />
               </Click>
             </TextContainer>
@@ -362,6 +364,7 @@ const Textboxsmall = styled.div`
   margin-bottom: 20px;
   margin-left: 54px;
 `;
+
 const MaximumContainer = styled.div`
   width: 100vw;
   display: flex;
