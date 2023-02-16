@@ -11,7 +11,6 @@ import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
 import Complete from "./pages/Complete";
-import Overdue from "./pages/Overdue";
 
 const App = () => {
   const isPC = useMediaQuery({
@@ -29,7 +28,6 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/complete" element={<Complete />} />
-              <Route path="/overdue" element={<Overdue />} />
               <Route path="/info" element={<Info />} />
               <Route path="/apply" element={<Application />} />
             </Routes>
