@@ -1,13 +1,11 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
-import { Radio } from "../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-
   const navigate = useNavigate();
   const goToInfo = () => {
-    navigate('/info');
+    navigate("/info");
   };
 
   return (
@@ -27,19 +25,17 @@ const Register = () => {
           <Space height="29px" />
           <Text>verify password</Text>
           <InputPwd />
+          <Space height="24px" />
+          <AgreeContainer>
+            <Agree>
+              <input required type="checkbox" />
+              개인정보 수집 및 이용 동의서
+            </Agree>
+          </AgreeContainer>
+          <Space height="24px" />
         </Form>
-        <Radio>개인 정보 동의</Radio>
-        {/* <Space height="29px" /> */}
-        <Click
-          onClick={goToInfo}
-        >
-          <Button
-            width="459px"
-            height="47px"
-            text="회원가입 완료"
-            fontSize="18px"
-            borderRadius="10px"
-          />
+        <Click onClick={goToInfo}>
+          <Button width="459px" height="47px" text="회원가입 완료" fontSize="18px" borderRadius="10px" />
         </Click>
       </Flex>
       <Space height="50px" />
@@ -48,7 +44,6 @@ const Register = () => {
 };
 
 export default Register;
-
 
 const Title = styled.div`
   font-weight: 700;
@@ -80,3 +75,10 @@ const Form = styled.div`
 
 const Click = styled.div``;
 
+const Agree = styled.label``;
+
+const AgreeContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+`;
