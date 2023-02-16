@@ -1,7 +1,7 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
@@ -43,8 +43,8 @@ const Main = () => {
   };
 
   const navigate = useNavigate();
-  const goToRegister = () => {
-    navigate("/register");
+  const gotoApply = () => {
+    navigate('/apply');
   };
 
   const FadeInSection = (props) => {
@@ -69,7 +69,9 @@ const Main = () => {
     <>
       <VideoPlayer />
       <ButtonContainer>
+        <Click onClick={gotoApply}>
         <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
+        </Click>
       </ButtonContainer>
       <Section1>
         <FadeInSection>

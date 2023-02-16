@@ -4,7 +4,8 @@ import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
 import { Button, Space } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
+import {useState, useEffect} from "react";
 
 const Application = () => {
   const FINALDATE = "2023-03-09T23:59:59";
@@ -14,6 +15,16 @@ const Application = () => {
   };
   const currDate = new Date().toLocaleDateString();
   const dueDate = new Date(2023, 2, 10).toLocaleDateString();
+  const gotoLogin = () => {
+    navigate('/login');
+  }
+
+  useEffect(() => {
+    if (!localStorage.getItem('refresh_token')){
+      console.log('working properly');
+      gotoLogin();
+    }
+  })
 
   return (
     <>
