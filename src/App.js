@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Header } from "./components";
 import styled from "styled-components";
-
+import {useState, useEffect} from "react";
 // pages
 import Main from "./pages/Main";
 import Login from "./pages/Login";
@@ -11,11 +11,19 @@ import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
 import Complete from "./pages/Complete";
+import axios from 'axios';
 
 const App = () => {
   const isPC = useMediaQuery({
     query: "(min-width: 768px) and (max-width: 1920px)",
   });
+
+  // const [loggedIn, setloggedIn] = useState(false);
+  // useEffect(() => {
+  //   const refresh_token = localStorage.getItem('refresh_token');
+  //   if (refresh_token)
+  //     setloggedIn(true);
+  // }, []);
 
   return (
     <>
