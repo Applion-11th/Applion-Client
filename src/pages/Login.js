@@ -1,9 +1,11 @@
 import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
+import { CgDanger } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import palette from "../styles/colors";
 
 const Login = () => {
   useEffect(() => {
@@ -15,6 +17,7 @@ const Login = () => {
   const [info, setInfo] = useState({
     email: "",
     pw: "",
+    correct: true,
   });
 
   const navigate = useNavigate();
@@ -43,8 +46,9 @@ const Login = () => {
           navigate("/info");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error.request.response);
+        setInfo({ correct: false });
       });
   };
 
@@ -69,7 +73,16 @@ const Login = () => {
           <Space height="29px" />
           <Text>password</Text>
           <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw} />
-          <Space height="29px" />
+          <Space height="9px" />
+          {info.correct ? (
+            <></>
+          ) : (
+            <TextRed>
+              <CgDanger /> 로그인 정보를 확인해주세요
+            </TextRed>
+          )}
+
+          <Space height="20px" />
           <Button width="459px" height="47px" text="로그인" fontSize="18px" borderRadius="10px" type="submit" />
         </Form>
 
@@ -131,3 +144,13 @@ const KaKaoLoginBtn = styled.button`
 `;
 
 const Click = styled.div``;
+
+const TextRed = styled.div`
+  display: inline-flex;
+  color: ${palette.lightred};
+  font-size: 15px;
+  font-family: Pretendard;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+`;
