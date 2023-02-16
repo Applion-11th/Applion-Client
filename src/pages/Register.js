@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  // const [email, setEmail] = useState("");
-  // const [pw1, setPw1] = useState("");
-  // const [pw2, setPw2] = useState("");
   const [info, setInfo] = useState({
     email: "",
     pw1: "",
@@ -20,23 +17,25 @@ const Register = () => {
     axios
       .post("https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/user/dj-rest-auth/registration/", {
         email: info.email,
-        password1: info.password1,
-        password2: info.password2,
+        password1: info.pw1,
+        password2: info.pw2,
       })
       .then((response) => {
-        if (response.data.code === 201) {
+        if (response.status === 201) {
           navigate("/info");
         }
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.request.response);
       });
   };
 
-  const handleEmail = (value) => {
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const id = e.target.id;
     setInfo({
       ...info,
-      email: value,
+      [id]: value,
     });
   };
 
@@ -50,15 +49,15 @@ const Register = () => {
         <Space height="10px" />
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
-        <Form action="" onSubmit={handleSubmit}>
+        <Form action="#" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
-          <Input onChange={handleEmail} value={info.email} />
+          <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
           <Space height="29px" />
           <Text>password</Text>
-          <InputPwd />
+          <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
           <Space height="29px" />
           <Text>verify password</Text>
-          <InputPwd />
+          <InputPwd onChange={(e) => handleChange(e)} id="pw2" value={info.pw2} />
           <Space height="24px" />
           <AgreeContainer>
             <Agree>

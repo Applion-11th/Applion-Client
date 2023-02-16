@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Input = (props) => {
-  const { onChange, value } = props;
-  return <InputContainer required value={value} onChange={(e) => onChange(e.target.value)} />;
+  const { onChange, value, id } = props;
+  return <InputContainer required value={value} id={id} onChange={(e) => onChange(e)} />;
 };
 
 const InputContainer = styled.input`
