@@ -24,6 +24,7 @@ const Register = () => {
       })
       .then((response) => {
         if (response.status === 201) {
+          localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
       })
@@ -48,7 +49,7 @@ const Register = () => {
     }
   };
 
-  const [isValid, setIsValid] = useState({ email: false, pw: false });
+  const [isValid, setIsValid] = useState({ email: false, pw: false, duplicate: true });
 
   const verifyEmail = () => {
     let emailVal = info.email;
@@ -69,6 +70,27 @@ const Register = () => {
     }
   };
 
+  axios.defaults.withCredentials = true;
+  const isDuplicated = () => {
+    console.log(info.email);
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}checkemail/`, {
+        email: info.email,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          if (response.data.is_unique) {
+            console.error("ssibal");
+          } else {
+            setIsValid({ ...isValid, duplicate: false });
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const [isModal, setIsModal] = useState(false);
 
   const showModal = () => {
@@ -86,12 +108,27 @@ const Register = () => {
         <Space height="10px" />
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
+        <div style={{ display: "flex", justifyContent: "end", width: "459px", marginTop: "20px" }}>
+          {isValid.email ? (
+            <div style={{ padding: "5px", borderRadius: "10px", backgroundColor: palette.red }}>
+              <span style={{ fontSize: "12px" }} onClick={isDuplicated}>
+                아이디 중복검사
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+
         <Form action="#" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
           <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
-          <div style={{ display: "flex", justifyContent: "end", height: "15px" }}>
+          <div style={{ display: "flex", alignItems: "end", height: "30px", flexDirection: "column" }}>
             <span style={{ fontFamily: "D2coding", color: isValid.email ? "green" : "red", fontSize: "12px" }}>
               {info.email === "" ? "" : isValid.email ? "사용가능한 이메일입니다" : "부정확한 이메일입니다"}
+            </span>
+            <span style={{ fontFamily: "D2coding", color: isValid.duplicate ? "red" : "green", fontSize: "12px" }}>
+              {info.email === "" ? "" : isValid.duplicate ? "중복 검사가 되지 않았습니다" : "중복이 없는 아이디입니다"}
             </span>
           </div>
 

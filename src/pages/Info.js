@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Input, InputSmall, Button, Space } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
@@ -8,6 +9,12 @@ const Info = () => {
   const gotoApplication = () => {
     navigate("/apply");
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      navigate("/login");
+    }
+  });
 
   return (
     <>

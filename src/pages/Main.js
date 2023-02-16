@@ -1,11 +1,10 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
-import palette from "../styles/colors";
 import mainanimation from "../assets/mainanimation.mkv";
 
 const Main = () => {
@@ -44,7 +43,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   const gotoApply = () => {
-    navigate("/login");
+    localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
   const FadeInSection = (props) => {
@@ -67,6 +66,7 @@ const Main = () => {
   const openTech = () => {
     console.log("open tech");
   };
+
   return (
     <div style={{ overflow: "hidden" }}>
       <VideoPlayer />
@@ -222,13 +222,6 @@ const TextIntro = styled.div`
   font-family: D2Coding;
   font-size: 32px;
   font-weight: bold;
-`;
-
-const TextIntroRed = styled.div`
-  font-family: D2Coding;
-  font-size: 32px;
-  color: ${palette.darkred};
-  font-weight: 600;
 `;
 
 const Section2 = styled.div`

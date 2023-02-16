@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import logoSogang from "../assets/logoSogang.svg";
 import { Space, Button } from "../components/atoms";
@@ -11,6 +12,13 @@ const Complete = () => {
   const gotoMain = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      navigate("/login");
+    }
+  });
+
   return (
     <>
       <Flex>

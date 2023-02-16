@@ -16,13 +16,21 @@ const Login = () => {
     email: "",
     pw: "",
   });
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      navigate("/apply");
+    }
+  });
 
   const goToRegister = () => {
     navigate("/register");
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}login/`, {
         email: info.email,
@@ -31,6 +39,7 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           console.log(response);
+          localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
       })
