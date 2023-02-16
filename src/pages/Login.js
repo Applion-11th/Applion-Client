@@ -3,14 +3,21 @@ import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Login = () => {
   const [info, setInfo] = useState({
     email: "",
     pw: "",
   });
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      navigate("/apply");
+    }
+  });
 
   const goToRegister = () => {
     navigate("/register");
