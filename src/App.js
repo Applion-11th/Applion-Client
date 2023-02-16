@@ -1,7 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { Space } from "./components/atoms";
 import { Header } from "./components";
+import logoPlaceHolder from "./assets/logoPlaceHolder.svg";
+import placeholder from "./assets/placeHolder.svg";
 import styled from "styled-components";
 
 // pages
@@ -34,7 +37,14 @@ const App = () => {
           </BrowserRouter>
         </>
       ) : (
-        <Text>PC환경에서 접속해주세요!</Text>
+        <>
+          <Flex>
+            <Space height="100px" />
+            <LogoContainer src={logoPlaceHolder} />
+            <Text>768px 이상의 화면에서 접속해주세요!</Text>
+            <ImgContainer src={placeholder} />
+          </Flex>
+        </>
       )}
     </>
   );
@@ -42,6 +52,22 @@ const App = () => {
 
 export default App;
 
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Text = styled.div`
-  font-size: 50px;
+  font-size: 32px;
+  font-weight: 500;
+`;
+
+const LogoContainer = styled.img`
+  padding-bottom: 50px;
+`;
+
+const ImgContainer = styled.img`
+  padding-bottom: 50px;
 `;
