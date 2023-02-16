@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const Info = () => {
   const navigate = useNavigate();
+  const gotoApplication = () => {
+    navigate("/apply");
+  };
+
   return (
     <>
       <Space height="10px" />
@@ -42,11 +46,7 @@ const Info = () => {
           <SelectTrack />
         </Form>
         <Space height="18px" />
-        <Click
-          onClick={() => {
-            console.log("submit");
-          }}
-        >
+        <Click onClick={gotoApplication}>
           <Button width="459px" height="47px" text="지원자 정보 기입 완료" fontSize="18px" borderRadius="10px" />
           <Space height="10px" />
         </Click>
