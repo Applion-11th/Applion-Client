@@ -11,7 +11,6 @@ import mainanimation from "../assets/mainanimation.mkv";
 const Main = () => {
   const VideoPlayer = () => {
     const playbackConst = 850;
-    const setHeightRef = useRef(null);
     const vidRef = useRef(null);
     const frameNumberRef = useRef(0);
 
@@ -54,7 +53,6 @@ const Main = () => {
     useEffect(() => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => setVisible(entry.isIntersecting));
-        entries.forEach((entry) => console.log(entry));
       });
       observer.observe(domRef.current);
     }, []);
