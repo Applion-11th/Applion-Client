@@ -7,9 +7,8 @@ const Info = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Space height="30px" />
+      <Space height="10px" />
       <Flex>
-        <FinalMent>지원서는 2023년 3월 9일 11시 59분까지 로그인 후 수정 가능합니다.</FinalMent>
         <Title>지원자 정보</Title>
         <Space height="10px" />
         <Description>
@@ -17,34 +16,31 @@ const Info = () => {
           <br />
           리크루팅 이후 안전하게 폐기될 에정입니다.
         </Description>
-        <Space height="25px" />
+        <Space height="10px" />
         <Form>
           <Text>이름</Text>
           <Input />
-          <Space height="29px" />
+          <Space height="10px" />
           <Text>2023학년도 1학기 기준 학기 (예시: 5학기)</Text>
           <Input />
-          <Space height="29px" />
+          <Space height="10px" />
           <Text>전공</Text>
           <Input />
-          <Space height="29px" />
-          <Text>전화번호 (ex : 010 - 1234 - 5678)</Text>
+          <Space height="10px" />
+          <Text>전화번호 (예시: 010-1234-5678)</Text>
           <Input />
-          <Space height="29px" />
+          <Space height="10px" />
           <Text>지원 트랙 선택</Text>
           <SelectTrack />
-          <Space height="29px" />
-          <Text>GitHub 주소 (선택)</Text>
-          <Input />
         </Form>
-        <Space height="29px" />
+        <Space height="18px" />
         <Click
           onClick={() => {
             console.log("submit");
           }}
         >
           <Button width="459px" height="47px" text="지원자 정보 기입 완료" fontSize="18px" borderRadius="10px" />
-          <Space height="29px" />
+          <Space height="10px" />
         </Click>
       </Flex>
     </>
@@ -83,8 +79,3 @@ const Form = styled.div`
 `;
 
 const Click = styled.div``;
-
-const FinalMent = styled.div`
-  text-align: center;
-  margin-bottom: 30px;
-`;
