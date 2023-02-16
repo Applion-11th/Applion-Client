@@ -2,9 +2,9 @@ import styled from "styled-components";
 import palette from "../../../styles/colors";
 
 export const Button = (props) => {
-  const { width, height, text, fontSize, borderRadius } = props;
+  const { width, height, text, fontSize, borderRadius, type } = props;
   return (
-    <RedButton width={width} height={height} borderRadius={borderRadius}>
+    <RedButton width={width} height={height} borderRadius={borderRadius} type={type}>
       <Text fontSize={fontSize}>{text}</Text>
     </RedButton>
   );
