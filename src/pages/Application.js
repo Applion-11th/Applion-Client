@@ -15,14 +15,11 @@ const Application = () => {
   };
   const currDate = new Date().toLocaleDateString();
   const dueDate = new Date(2023, 2, 10).toLocaleDateString();
-  const gotoLogin = () => {
-    navigate("/login");
-  };
 
   useEffect(() => {
     if (!localStorage.getItem("refresh_token")) {
       console.log("working properly");
-      gotoLogin();
+      navigate("/login");
     }
   });
 

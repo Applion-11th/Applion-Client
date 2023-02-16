@@ -15,7 +15,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/user/dj-rest-auth/registration/", {
+      .post(`${process.env.REACT_APP_SERVER_URL}registration/`, {
         email: info.email,
         password1: info.pw1,
         password2: info.pw2,

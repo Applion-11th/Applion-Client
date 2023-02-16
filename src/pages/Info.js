@@ -18,7 +18,7 @@ const Info = () => {
         <Description>
           리크루팅 용도로 사용될 정보입니다.
           <br />
-          리크루팅 이후 안전하게 폐기될 에정입니다.
+          리크루팅 이후 안전하게 폐기될 예정입니다.
         </Description>
         <Space height="10px" />
         <Form>
