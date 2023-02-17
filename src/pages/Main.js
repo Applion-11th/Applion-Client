@@ -1,7 +1,6 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
@@ -40,12 +39,6 @@ const Main = () => {
     );
   };
 
-  const navigate = useNavigate();
-
-  const gotoApply = () => {
-    localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
-  };
-
   const FadeInSection = (props) => {
     const [isVisible, setVisible] = useState(false);
     const domRef = useRef();
@@ -65,17 +58,12 @@ const Main = () => {
 
   const openTech = () => {
     console.log("open tech");
-    window.open("https://techit.education/", "_blank")
+    window.open("https://techit.education/", "_blank");
   };
 
   return (
     <div style={{ overflow: "hidden" }}>
       <VideoPlayer />
-      <ButtonContainer>
-        <Click onClick={gotoApply}>
-          <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
-        </Click>
-      </ButtonContainer>
       <Section1>
         <FadeInSection>
           <CenterContainer>
@@ -207,13 +195,6 @@ const CenterContainer = styled.div`
   text-align: center;
 `;
 
-const ButtonContainer = styled.div`
-  top: 40px;
-  right: 50px;
-  position: fixed;
-  z-index: 10;
-`;
-
 const TextIntroContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -326,7 +307,8 @@ const Click = styled.div``;
 
 const Video = styled.video`
   position: fixed;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   transform: translateZ(0);
 `;
 
