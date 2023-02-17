@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const SelectTrack = () => {
   const selectList = ["백엔드", "프론트엔드"];
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
@@ -17,9 +17,9 @@ export const SelectTrack = () => {
   return (
     <>
       <SelectContainer onChange={handleSelect} value={selected}>
-      <SelectOption value="" disabled={true} >
-            지원트랙을 선택해주세요
-      </SelectOption>
+        <SelectOption value="" disabled={true}>
+          지원트랙을 선택해주세요
+        </SelectOption>
         {selectList.map((item) => (
           <SelectOption value={item} key={item}>
             {item}
