@@ -12,7 +12,7 @@ const KaKao = () => {
   useEffect(() => {
     if (code) {
       axios
-        .get(`${process.env.REACT_APP_SERVER_URL}`, {
+        .get(`${"https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/"}`, {
           code: code,
         })
         .then((res) => {
