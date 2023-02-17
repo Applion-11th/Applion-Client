@@ -15,9 +15,14 @@ const Info = () => {
     position: "",
   })
 
+  useEffect(() => {
   if(localStorage.getItem("access_token")){
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}user/`)
+      .get(`${process.env.REACT_APP_SERVER_URL}user/`, {
+        headers: {
+          'Authorization' : 'Bearer' + ` ${localStorage.getItem("access_token")}`
+        }
+      })
       .then((response) => {
         if(response.status == 200){
           setmoreInfo({
@@ -34,6 +39,7 @@ const Info = () => {
       .catch(function (error) {
         console.log(error.request.response);
       });  }
+    }, [])
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -52,7 +58,6 @@ const Info = () => {
   }
 
   const moreInfoSubmit = (e) => {
-    e.preventDefault();
     axios
       .patch(`${process.env.REACT_APP_SERVER_URL}user/`, {
         name: moreInfo.name,
@@ -61,9 +66,14 @@ const Info = () => {
         major: moreInfo.major,
         phone_num: moreInfo.phone_num,
         position: moreInfo.position,
+      }, {
+          headers: {
+            'Authorization' : 'Bearer' + ` ${localStorage.getItem("access_token")}`
+          }
       })
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
+          console.log("working");
           navigate("/apply");
         }
       })
