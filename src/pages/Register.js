@@ -26,14 +26,12 @@ const Register = () => {
         password2: info.pw2,
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 201) {
-          console.log(response.data.access_token);
           localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error.request.response);
       });
   };
@@ -93,7 +91,6 @@ const Register = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}checkid/${info.username}`, {})
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           if (response.data.is_unique) {
             alert("사용 가능한 아이디입니다.");

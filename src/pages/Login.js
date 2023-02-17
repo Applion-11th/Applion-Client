@@ -41,7 +41,6 @@ const Login = () => {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
           localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
