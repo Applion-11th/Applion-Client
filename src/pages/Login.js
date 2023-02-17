@@ -22,6 +22,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const socialLoginHandler = (e) => {
+    const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+    const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+    window.location.replace(KAKAO_AUTH_URL);
+  };
+
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
       navigate("/apply");
@@ -99,7 +108,7 @@ const Login = () => {
           <Button width="459px" height="47px" text="회원가입 하러가기" fontSize="18px" borderRadius="10px" />
         </Click>
         <Space height="29px" />
-        <KaKaoLoginBtn onClick={() => (window.location.href = `${process.env.REACT_APP_KAKAO_URL}`)}>
+        <KaKaoLoginBtn onClick={socialLoginHandler}>
           <InlineFlex>
             <BsFillChatFill style={{ color: "#191604", marginRight: "15px" }} />
             카카오톡으로 로그인하기
