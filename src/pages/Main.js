@@ -1,8 +1,9 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
+import logoSogang from "../assets/logoSogang.svg";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
 import mainanimation from "../assets/mainanimation.mkv";
@@ -40,12 +41,6 @@ const Main = () => {
     );
   };
 
-  const navigate = useNavigate();
-
-  const gotoApply = () => {
-    localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
-  };
-
   const FadeInSection = (props) => {
     const [isVisible, setVisible] = useState(false);
     const domRef = useRef();
@@ -65,17 +60,17 @@ const Main = () => {
 
   const openTech = () => {
     console.log("open tech");
-    window.open("https://techit.education/", "_blank")
+    window.open("https://techit.education/", "_blank");
+  };
+
+  const navigate = useNavigate();
+  const gotoApply = () => {
+    localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
   return (
     <div style={{ overflow: "hidden" }}>
       <VideoPlayer />
-      <ButtonContainer>
-        <Click onClick={gotoApply}>
-          <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
-        </Click>
-      </ButtonContainer>
       <Section1>
         <FadeInSection>
           <CenterContainer>
@@ -117,7 +112,7 @@ const Main = () => {
       <Section3>
         <FadeInSection>
           <RowContainer>
-            <Space margin="0px 60px 0px 0px" />
+            <Space margin="0px 200px 0px 0px" />
             <TimeTable>
               <TextBold>지원 일정</TextBold>
               <Space height="20px" />
@@ -141,7 +136,7 @@ const Main = () => {
               <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
               <Space height="10px" />
               <Click onClick={openTech}>
-                <Button text="TECHIT 둘러보기" fontSize="18px" width="160px" height="44px" borderRadius="16px" />
+                <Button text="TECHIT 둘러보기" fontSize="18px" width="200px" height="56px" borderRadius="16px" />
               </Click>
             </TextContainer>
             <Textbox>
@@ -179,7 +174,11 @@ const Main = () => {
       <Section5>
         <FadeInSection>
           <LogoFooterContainer src={logoFooter} />
-          <Space height="25vh" />
+          <Space height="30px" />
+          {/* <ButtonContainer onClick={gotoApply}>
+            <LogoSmallContainer src={logoSogang} />
+          </ButtonContainer> */}
+          <Space height="20vh" />
         </FadeInSection>
       </Section5>
     </div>
@@ -205,13 +204,6 @@ const CenterContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-`;
-
-const ButtonContainer = styled.div`
-  top: 40px;
-  right: 50px;
-  position: fixed;
-  z-index: 10;
 `;
 
 const TextIntroContainer = styled.div`
@@ -326,7 +318,8 @@ const Click = styled.div``;
 
 const Video = styled.video`
   position: fixed;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   transform: translateZ(0);
 `;
 
@@ -372,4 +365,16 @@ const MaximumContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border-radius: 16px;
+  border: 1px solid gray;
+`;
+
+const LogoSmallContainer = styled.img`
+  width: 120px;
 `;
