@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export const SelectTrack = ({onSelected}) => {
+export const SelectTrack = ({ onSelected }) => {
   const selectList = ["백엔드", "프론트엔드"];
   const [selected, setSelected] = useState("");
 
@@ -9,11 +9,6 @@ export const SelectTrack = ({onSelected}) => {
     setSelected(e.target.value);
     onSelected(e.target.value);
   };
-
-  const options = [
-    { value: "백엔드", label: "백엔드" },
-    { value: "프론트엔드", label: "프론트엔드" },
-  ];
 
   return (
     <>
