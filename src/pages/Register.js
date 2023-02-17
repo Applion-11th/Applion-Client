@@ -95,13 +95,15 @@ const Register = () => {
       .then((response) => {
         if (response.status === 200) {
           if (response.data.is_unique) {
-            console.error("unique");
+            alert("사용 가능한 이메일입니다.");
           } else {
             setIsValid({ ...isValid, duplicate: false });
+            alert("사용 불가능한 이메일입니다.");
           }
         }
       })
       .catch((error) => {
+        alert("사용 불가능한 이메일입니다.");
         console.log(error);
       });
   };
@@ -121,21 +123,21 @@ const Register = () => {
         <Space height="10px" />
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
-        <div style={{ display: "flex", justifyContent: "end", width: "459px", marginTop: "20px" }}>
-          {isValid.email ? (
-            <div style={{ padding: "5px", borderRadius: "10px", backgroundColor: palette.lightred }}>
-              <span style={{ fontSize: "12px" }} onClick={isDuplicated}>
-                아이디 중복검사
-              </span>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-
         <Form action="#" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
-          <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
+          <FlexRow>
+            <Input onChange={(e) => handleChange(e)} id="email" value={info.email} width="310px" />
+            <Click onClick={isDuplicated}>
+              <Button
+                width="100px"
+                height="47px"
+                text="중복확인"
+                fontSize="18px"
+                borderRadius="10px"
+                color={isValid.email ? palette.red : "gray"}
+              />
+            </Click>
+          </FlexRow>
           <FlexInfo>
             <span
               style={{
@@ -144,19 +146,9 @@ const Register = () => {
                 fontSize: "12px",
               }}
             >
-              {info.email === "" ? "" : isValid.email ? "" : "이메일 형식이 잘못되었습니다"}
-            </span>
-            <span
-              style={{
-                fontFamily: "Pretendard",
-                color: isValid.duplicate ? `${palette.lightred}` : "green",
-                fontSize: "12px",
-              }}
-            >
-              {info.email === "" ? "" : isValid.duplicate ? "중복 검사가 되지 않았습니다" : "중복이 없는 아이디입니다"}
+              {info.email === "" ? "" : isValid.email ? " " : "이메일 형식이 잘못되었습니다"}
             </span>
           </FlexInfo>
-
           <Space height="5px" />
           <Text>password</Text>
           <FlexInfo>
@@ -167,7 +159,7 @@ const Register = () => {
           <Text>verify password</Text>
           <InputPwd onChange={(e) => handleChange(e)} id="pw2" value={info.pw2} />
           <div style={{ display: "flex", justifyContent: "end", height: "15px" }}>
-            <span style={{ fontFamily: "D2coding", color: isValid.pw ? "green" : "red", fontSize: "12px" }}>
+            <span style={{ fontFamily: "Pretendard", color: isValid.pw ? "green" : "red", fontSize: "12px" }}>
               {info.pw2 === "" ? "" : isValid.pw ? "비밀번호가 동일합니다" : "비밀번호가 동일하지 않습니다"}
             </span>
           </div>
@@ -192,7 +184,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={isValid.email && isValid.pw ? palette.lightred : "gray"}
+            color={isValid.email && isValid.pw ? palette.red : "gray"}
           />
         </Form>
       </Flex>
@@ -252,3 +244,11 @@ const FlexInfo = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
 `;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Click = styled.div``;

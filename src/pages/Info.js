@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Input, InputSmall, Button, Space } from "../components/atoms";
+import { Input, Button, Space } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -32,11 +32,11 @@ const Info = () => {
           <FlexRow>
             <FlexCol>
               <Text>이름</Text>
-              <InputSmall />
+              <Input width="188px" />
             </FlexCol>
             <FlexCol>
               <Text>학번</Text>
-              <InputSmall />
+              <Input width="188px" />
             </FlexCol>
           </FlexRow>
           <Space height="10px" />
