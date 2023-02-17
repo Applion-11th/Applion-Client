@@ -8,7 +8,7 @@ import Modal from "../components/atoms/Modal";
 
 const Register = () => {
   const [info, setInfo] = useState({
-    email: "",
+    username: "",
     pw1: "",
     pw2: "",
   });
@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}registration/`, {
-        email: info.email,
+        username: info.username,
         password1: info.pw1,
         password2: info.pw2,
       })
@@ -45,8 +45,8 @@ const Register = () => {
       [id]: value,
     });
 
-    if (id === "email") {
-      verifyEmail(value);
+    if (id === "username") {
+      verifyusername(value);
     } else if (id === "pw1") {
       verifyPW(value);
     } else if (id === "pw2") {
@@ -54,16 +54,16 @@ const Register = () => {
     }
   };
 
-  const [isValid, setIsValid] = useState({ email: false, pw: false, duplicate: true });
+  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true });
 
-  const verifyEmail = () => {
-    let emailVal = info.email;
-    const emailRegEx = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+  const verifyusername = () => {
+    let usernameVal = info.username;
+    const usernameRegEx = /^[A-za-z0-9]{5,15}/g;
 
-    if (emailVal.match(emailRegEx) != null) {
-      setIsValid({ ...isValid, email: true });
+    if (usernameVal.match(usernameRegEx) != null) {
+      setIsValid({ ...isValid, username: true });
     } else {
-      setIsValid({ ...isValid, email: false });
+      setIsValid({ ...isValid, username: false });
     }
   };
 
@@ -87,23 +87,23 @@ const Register = () => {
   };
 
   const isDuplicated = () => {
-    console.log(info.email);
+    console.log(info.username);
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}checkemail/`, {
-        email: info.email,
+      .get(`${process.env.REACT_APP_SERVER_URL}checkid/`, {
+        username: info.username,
       })
       .then((response) => {
         if (response.status === 200) {
           if (response.data.is_unique) {
-            alert("사용 가능한 이메일입니다.");
+            alert("사용 가능한 아이디입니다.");
           } else {
             setIsValid({ ...isValid, duplicate: false });
-            alert("사용 불가능한 이메일입니다.");
+            alert("사용 불가능한 아이디입니다.");
           }
         }
       })
       .catch((error) => {
-        alert("사용 불가능한 이메일입니다.");
+        alert("에러");
         console.log(error);
       });
   };
@@ -124,9 +124,12 @@ const Register = () => {
         <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
         <Space height="25px" />
         <Form action="#" onSubmit={handleSubmit}>
-          <Text>e-mail</Text>
+          <Text>id</Text>
           <FlexRow>
-            <Input onChange={(e) => handleChange(e)} id="email" value={info.email} width="310px" />
+            <FlexInfo>
+              <Input onChange={(e) => handleChange(e)} id="username" value={info.username} width="310px" />
+              <TextSmall>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextSmall>
+            </FlexInfo>
             <Click onClick={isDuplicated}>
               <Button
                 width="100px"
@@ -134,26 +137,15 @@ const Register = () => {
                 text="중복확인"
                 fontSize="18px"
                 borderRadius="10px"
-                color={isValid.email ? palette.red : "gray"}
+                color={isValid.username ? palette.red : "gray"}
               />
             </Click>
           </FlexRow>
-          <FlexInfo>
-            <span
-              style={{
-                fontFamily: "Pretendard",
-                color: isValid.email ? "green" : `${palette.lightred}`,
-                fontSize: "12px",
-              }}
-            >
-              {info.email === "" ? "" : isValid.email ? " " : "이메일 형식이 잘못되었습니다"}
-            </span>
-          </FlexInfo>
           <Space height="5px" />
           <Text>password</Text>
           <FlexInfo>
             <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
-            <TextRed>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextRed>
+            <TextSmall>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextSmall>
           </FlexInfo>
           <Space height="5px" />
           <Text>verify password</Text>
@@ -184,7 +176,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={isValid.email && isValid.pw ? palette.red : "gray"}
+            color={isValid.username && isValid.pw ? palette.red : "gray"}
           />
         </Form>
       </Flex>
@@ -232,8 +224,7 @@ const AgreeContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const TextRed = styled.div`
-  color: ${palette.lightred};
+const TextSmall = styled.div`
   font-size: 12px;
   font-family: Pretendard;
 `;
