@@ -174,7 +174,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={isValid.username && isValid.pw ? palette.red : "gray"}
+            color={isValid.username && isValid.pw && isValid.duplicate ? palette.red : "gray"}
           />
         </Form>
       </Flex>
