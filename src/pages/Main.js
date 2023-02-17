@@ -65,6 +65,7 @@ const Main = () => {
 
   const openTech = () => {
     console.log("open tech");
+    window.open("https://techit.education/", "_blank")
   };
 
   return (

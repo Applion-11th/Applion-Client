@@ -15,7 +15,7 @@ const Login = () => {
   });
 
   const [info, setInfo] = useState({
-    email: "",
+    username: "",
     pw: "",
     correct: true,
   });
@@ -32,16 +32,24 @@ const Login = () => {
     navigate("/register");
   };
 
+  const onCheckEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}login/`, {
-        email: info.email,
+        username: info.username,
         password: info.pw,
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
           localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
@@ -67,9 +75,9 @@ const Login = () => {
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />
-        <Form action="#" onSubmit={handleSubmit}>
-          <Text>e-mail</Text>
-          <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
+        <Form action="#" onSubmit={handleSubmit} onKeyDown={onCheckEnter}>
+          <Text>id</Text>
+          <Input onChange={(e) => handleChange(e)} id="username" value={info.username} />
           <Space height="29px" />
           <Text>password</Text>
           <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw} />
