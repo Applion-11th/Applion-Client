@@ -26,7 +26,9 @@ const Register = () => {
         password2: info.pw2,
       })
       .then((response) => {
+        console.log(response);
         if (response.status === 201) {
+          console.log(response.data.access_token);
           localStorage.setItem("access_token", response.data.access_token);
           navigate("/info");
         }
@@ -54,7 +56,7 @@ const Register = () => {
     }
   };
 
-  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true });
+  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true, match: false });
 
   const verifyusername = () => {
     let usernameVal = info.username;
@@ -69,7 +71,7 @@ const Register = () => {
 
   const verifyPW = () => {
     let pwVal = info.pw1;
-    const pwRegEx = /^[A-Za-z0-9]{8,20}$/;
+    const pwRegEx = /^[A-Za-z0-9]{7,19}$/;
 
     if (pwVal.match(pwRegEx) != null) {
       setIsValid({ ...isValid, pw: true });
@@ -86,13 +88,12 @@ const Register = () => {
     }
   };
 
-  const isDuplicated = () => {
+  const isDuplicate = () => {
     console.log(info.username);
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}checkid/`, {
-        username: info.username,
-      })
+      .get(`${process.env.REACT_APP_SERVER_URL}checkid/${info.username}`, {})
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           if (response.data.is_unique) {
             alert("사용 가능한 아이디입니다.");
@@ -130,7 +131,7 @@ const Register = () => {
               <Input onChange={(e) => handleChange(e)} id="username" value={info.username} width="310px" />
               <TextSmall>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextSmall>
             </FlexInfo>
-            <Click onClick={isDuplicated}>
+            <Click onClick={isValid.username ? isDuplicate : ""}>
               <Button
                 width="100px"
                 height="47px"
