@@ -6,7 +6,7 @@ import { Header } from "./components";
 import logoPlaceHolder from "./assets/logoPlaceHolder.svg";
 import placeholder from "./assets/placeHolder.svg";
 import styled from "styled-components";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 // pages
 import Main from "./pages/Main";
 import Login from "./pages/Login";
@@ -14,26 +14,24 @@ import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
 import Complete from "./pages/Complete";
-import axios from 'axios';
 
 const App = () => {
   const isPC = useMediaQuery({
     query: "(min-width: 768px) and (max-width: 1920px)",
   });
 
-  // const [loggedIn, setloggedIn] = useState(false);
-  // useEffect(() => {
-  //   const refresh_token = localStorage.getItem('refresh_token');
-  //   if (refresh_token)
-  //     setloggedIn(true);
-  // }, []);
+  const [loggedIn, setloggedIn] = useState(false);
+  useEffect(() => {
+    const refresh_token = localStorage.getItem("refresh_token");
+    if (refresh_token) setloggedIn(true);
+  }, []);
 
   return (
     <>
       {isPC ? (
         <>
           <BrowserRouter>
-            {window.location.pathname !== "/" ? <Header /> : <></>}
+            <Header />
             <Routes>
               <Route path="/" exact element={<Main />} />
               <Route path="/login" element={<Login />} />

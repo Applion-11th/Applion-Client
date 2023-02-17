@@ -1,11 +1,10 @@
 import { Button, Space } from "../components/atoms";
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { debounce } from "lodash";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logoFull from "../assets/logoFull.svg";
 import logoFooter from "../assets/logoFooter.svg";
-import palette from "../styles/colors";
 import mainanimation from "../assets/mainanimation.mkv";
 
 const Main = () => {
@@ -44,7 +43,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   const gotoApply = () => {
-    navigate("/apply");
+    localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
   const FadeInSection = (props) => {
@@ -67,8 +66,9 @@ const Main = () => {
   const openTech = () => {
     console.log("open tech");
   };
+
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <VideoPlayer />
       <ButtonContainer>
         <Click onClick={gotoApply}>
@@ -90,9 +90,16 @@ const Main = () => {
       </Section1>
       <Section2>
         <FadeInSection>
-          <RowContainer>
-            <Space margin="200px 600px 0px 0px" />
-            <TextContainer>
+          <div style={{ width: "100vw", display: "flex", justifyContent: "end" }}>
+            <div
+              style={{
+                width: "50vw",
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "start",
+                flexDirection: "column",
+              }}
+            >
               <TextBold>Possibility to Reality</TextBold>
               <Space height="25px" />
               <Text>
@@ -102,8 +109,8 @@ const Main = () => {
                 <br />
                 IT분야의 TECH 리더를 양성합니다.
               </Text>
-            </TextContainer>
-          </RowContainer>
+            </div>
+          </div>
         </FadeInSection>
       </Section2>
       <Section3>
@@ -174,7 +181,7 @@ const Main = () => {
           <Space height="25vh" />
         </FadeInSection>
       </Section5>
-    </>
+    </div>
   );
 };
 
@@ -217,13 +224,6 @@ const TextIntro = styled.div`
   font-weight: bold;
 `;
 
-const TextIntroRed = styled.div`
-  font-family: D2Coding;
-  font-size: 32px;
-  color: ${palette.darkred};
-  font-weight: 600;
-`;
-
 const Section2 = styled.div`
   display: flex;
   flex-direction: column;
@@ -243,6 +243,8 @@ const RowContainer = styled.div`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 40vw;
+  padding-left: 10vw;
 `;
 
 const TextBold = styled.div`
@@ -339,14 +341,13 @@ const Videowrapper = styled.div`
 const Textbox = styled.div`
   background: rgba(87, 49, 49, 0.7);
   border-radius: 36px;
-  width: 45vw;
+  width: 40vw;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding-top: 1vw;
-  padding-left: 3vw;
+  padding: 2.5vw;
 `;
 
 const TextboxBold = styled.div`
@@ -366,7 +367,6 @@ const Textboxsmall = styled.div`
 `;
 
 const MaximumContainer = styled.div`
-  width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
