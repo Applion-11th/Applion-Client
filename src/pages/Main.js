@@ -12,7 +12,7 @@ const Main = () => {
     const playbackConst = 850;
     const vidRef = useRef(null);
     const frameNumberRef = useRef(0);
-
+    console.log("test");
     useLayoutEffect(() => {
       const handleScroll = debounce(() => {
         const frameNumber = window.pageYOffset / playbackConst;
