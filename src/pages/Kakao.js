@@ -12,9 +12,7 @@ const KaKao = () => {
   useEffect(() => {
     if (code) {
       axios
-        .get(`${"https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/"}`, {
-          code: code,
-        })
+        .get(`${`https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/${code}`}`)
         .then((res) => {
           localStorage.setItem("access_token", res.data.access_token);
         })
