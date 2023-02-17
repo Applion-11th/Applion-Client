@@ -1,14 +1,91 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Input, Button, Space } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Info = () => {
-  const navigate = useNavigate();
-  const gotoApplication = () => {
-    navigate("/apply");
+  const [moreInfo, setmoreInfo] = useState({
+    name: "",
+    student_num: "",
+    major: "",
+    semester: "",
+    phone_num: "",
+    position: "",
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}user/`, {
+          headers: {
+            Authorization: `Bearer${localStorage.getItem("access_token")}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            setmoreInfo({
+              ...moreInfo,
+              name: response.data.name,
+              student_num: response.data.student_num,
+              semester: response.data.semester,
+              major: response.data.major,
+              phone_num: response.data.phone_num,
+              position: response.data.position,
+            });
+          }
+        })
+        .catch(function (error) {
+          console.log(error.request.response);
+        });
+    }
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const id = e.target.id;
+    setmoreInfo({
+      ...moreInfo,
+      [id]: value,
+    });
   };
+
+  const handleSelected = (selectedData) => {
+    setmoreInfo({
+      ...moreInfo,
+      position: selectedData,
+    });
+  };
+
+  const moreInfoSubmit = (e) => {
+    axios
+      .patch(
+        `${process.env.REACT_APP_SERVER_URL}user/`,
+        {
+          name: moreInfo.name,
+          student_num: moreInfo.student_num,
+          semester: moreInfo.semester,
+          major: moreInfo.major,
+          phone_num: moreInfo.phone_num,
+          position: moreInfo.position,
+        },
+        {
+          headers: {
+            Authorization: `Bearer${localStorage.getItem("access_token")}`,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/apply");
+        }
+      })
+      .catch(function (error) {
+        console.log(error.request.response);
+      });
+  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {
@@ -32,28 +109,28 @@ const Info = () => {
           <FlexRow>
             <FlexCol>
               <Text>이름</Text>
-              <Input width="188px" />
+              <Input width="188px" id="name" value={moreInfo.name} onChange={(e) => handleChange(e)} />
             </FlexCol>
             <FlexCol>
               <Text>학번</Text>
-              <Input width="188px" />
+              <Input width="188px" id="student_num" value={moreInfo.student_num} onChange={(e) => handleChange(e)} />
             </FlexCol>
           </FlexRow>
           <Space height="10px" />
           <Text>2023학년도 1학기 기준 학기 (예시: 5학기)</Text>
-          <Input />
+          <Input id="semester" value={moreInfo.semester} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>전공</Text>
-          <Input />
+          <Input id="major" value={moreInfo.major} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>전화번호 (예시: 010-1234-5678)</Text>
-          <Input />
+          <Input id="phone_num" value={moreInfo.phone_num} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>지원 트랙 선택</Text>
-          <SelectTrack />
+          <SelectTrack onSelected={handleSelected} />
         </Form>
         <Space height="18px" />
-        <Click onClick={gotoApplication}>
+        <Click onClick={moreInfoSubmit}>
           <Button
             width="459px"
             height="47px"
