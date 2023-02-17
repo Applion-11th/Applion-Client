@@ -9,7 +9,7 @@ import palette from "../styles/colors";
 
 const Login = () => {
   useEffect(() => {
-    if (localStorage.getItem("refresh_token")) {
+    if (localStorage.getItem("access_token")) {
       navigate("/apply");
     }
   });

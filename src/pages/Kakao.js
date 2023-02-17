@@ -15,12 +15,14 @@ const KaKao = () => {
         .get(`${`https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/${code}`}`)
         .then((res) => {
           localStorage.setItem("access_token", res.data.access_token);
+          setTimeout(() => {
+            navigate("/info");
+          }, 1000);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-    navigate("/info");
   });
 
   return (
