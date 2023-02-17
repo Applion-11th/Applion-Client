@@ -13,7 +13,10 @@ const Register = () => {
     pw2: "",
   });
 
+  axios.defaults.withCredentials = true;
+
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -83,8 +86,6 @@ const Register = () => {
     }
   };
 
-  axios.defaults.withCredentials = true;
-
   const isDuplicated = () => {
     console.log(info.email);
     axios
@@ -110,8 +111,6 @@ const Register = () => {
   const showModal = () => {
     setIsModal(!isModal);
   };
-
-  axios.defaults.withCredentials = true;
 
   return (
     <div style={{ position: "relative" }}>

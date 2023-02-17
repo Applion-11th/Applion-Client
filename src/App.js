@@ -14,7 +14,6 @@ import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
 import Complete from "./pages/Complete";
-import axios from "axios";
 
 const App = () => {
   const isPC = useMediaQuery({
