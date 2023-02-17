@@ -44,6 +44,8 @@ const Register = () => {
 
     if (id === "email") {
       verifyEmail(value);
+    } else if (id === "pw1") {
+      verifyPW(value);
     } else if (id === "pw2") {
       isPWSame(value);
     }
@@ -53,12 +55,23 @@ const Register = () => {
 
   const verifyEmail = () => {
     let emailVal = info.email;
-    let regExp = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+    const emailRegEx = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
 
-    if (emailVal.match(regExp) != null) {
+    if (emailVal.match(emailRegEx) != null) {
       setIsValid({ ...isValid, email: true });
     } else {
       setIsValid({ ...isValid, email: false });
+    }
+  };
+
+  const verifyPW = () => {
+    let pwVal = info.pw1;
+    const pwRegEx = /^[A-Za-z0-9]{8,20}$/;
+
+    if (pwVal.match(pwRegEx) != null) {
+      setIsValid({ ...isValid, pw: true });
+    } else {
+      setIsValid({ ...isValid, pw: false });
     }
   };
 
@@ -71,6 +84,7 @@ const Register = () => {
   };
 
   axios.defaults.withCredentials = true;
+
   const isDuplicated = () => {
     console.log(info.email);
     axios
@@ -80,7 +94,7 @@ const Register = () => {
       .then((response) => {
         if (response.status === 200) {
           if (response.data.is_unique) {
-            console.error("ssibal");
+            console.error("unique");
           } else {
             setIsValid({ ...isValid, duplicate: false });
           }
@@ -110,7 +124,7 @@ const Register = () => {
         <Space height="25px" />
         <div style={{ display: "flex", justifyContent: "end", width: "459px", marginTop: "20px" }}>
           {isValid.email ? (
-            <div style={{ padding: "5px", borderRadius: "10px", backgroundColor: palette.red }}>
+            <div style={{ padding: "5px", borderRadius: "10px", backgroundColor: palette.lightred }}>
               <span style={{ fontSize: "12px" }} onClick={isDuplicated}>
                 아이디 중복검사
               </span>
@@ -123,19 +137,34 @@ const Register = () => {
         <Form action="#" onSubmit={handleSubmit}>
           <Text>e-mail</Text>
           <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
-          <div style={{ display: "flex", alignItems: "end", height: "30px", flexDirection: "column" }}>
-            <span style={{ fontFamily: "D2coding", color: isValid.email ? "green" : "red", fontSize: "12px" }}>
-              {info.email === "" ? "" : isValid.email ? "사용가능한 이메일입니다" : "부정확한 이메일입니다"}
+          <FlexInfo>
+            <span
+              style={{
+                fontFamily: "Pretendard",
+                color: isValid.email ? "green" : `${palette.lightred}`,
+                fontSize: "12px",
+              }}
+            >
+              {info.email === "" ? "" : isValid.email ? "" : "이메일 형식이 잘못되었습니다"}
             </span>
-            <span style={{ fontFamily: "D2coding", color: isValid.duplicate ? "red" : "green", fontSize: "12px" }}>
+            <span
+              style={{
+                fontFamily: "Pretendard",
+                color: isValid.duplicate ? `${palette.lightred}` : "green",
+                fontSize: "12px",
+              }}
+            >
               {info.email === "" ? "" : isValid.duplicate ? "중복 검사가 되지 않았습니다" : "중복이 없는 아이디입니다"}
             </span>
-          </div>
+          </FlexInfo>
 
-          <Space height="29px" />
+          <Space height="5px" />
           <Text>password</Text>
-          <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
-          <Space height="29px" />
+          <FlexInfo>
+            <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
+            <TextRed>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextRed>
+          </FlexInfo>
+          <Space height="5px" />
           <Text>verify password</Text>
           <InputPwd onChange={(e) => handleChange(e)} id="pw2" value={info.pw2} />
           <div style={{ display: "flex", justifyContent: "end", height: "15px" }}>
@@ -143,15 +172,15 @@ const Register = () => {
               {info.pw2 === "" ? "" : isValid.pw ? "비밀번호가 동일합니다" : "비밀번호가 동일하지 않습니다"}
             </span>
           </div>
-          <Space height="24px" />
+          <Space height="12px" />
           <AgreeContainer>
             <Agree>
               <input required type="checkbox" />
               개인정보 수집 및 이용 동의서
             </Agree>
             <span
-              style={{ cursor: "pointer", marginLeft: "10px", fontSize: "10px", color: "lightGray", marginTop: "5px" }}
               onClick={showModal}
+              style={{ cursor: "pointer", marginLeft: "10px", fontSize: "10px", color: "lightGray", marginTop: "5px" }}
             >
               더보기
             </span>
@@ -164,7 +193,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={isValid.email && isValid.pw ? palette.red : "gray"}
+            color={isValid.email && isValid.pw ? palette.lightred : "gray"}
           />
         </Form>
       </Flex>
@@ -210,4 +239,17 @@ const AgreeContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
+`;
+
+const TextRed = styled.div`
+  color: ${palette.lightred};
+  font-size: 12px;
+  font-family: Pretendard;
+`;
+
+const FlexInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 `;
