@@ -17,7 +17,7 @@ const KaKao = () => {
           localStorage.setItem("access_token", res.data.access_token);
           setTimeout(() => {
             navigate("/info");
-          }, 1000);
+          }, 300);
         })
         .catch((err) => {
           console.log(err);
@@ -26,8 +26,8 @@ const KaKao = () => {
   });
 
   return (
-    <div>
-      <p>안녕</p>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <p>로딩 중입니다.</p>
     </div>
   );
 };
