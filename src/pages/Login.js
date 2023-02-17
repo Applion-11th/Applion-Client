@@ -32,8 +32,17 @@ const Login = () => {
     navigate("/register");
   };
 
+  const onCheckEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}login/`, {
         username: info.username,
@@ -66,7 +75,7 @@ const Login = () => {
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />
-        <Form action="#" onSubmit={handleSubmit}>
+        <Form action="#" onSubmit={handleSubmit} onKeyDown={onCheckEnter}>
           <Text>id</Text>
           <Input onChange={(e) => handleChange(e)} id="username" value={info.username} />
           <Space height="29px" />
