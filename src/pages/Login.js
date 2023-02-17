@@ -15,7 +15,7 @@ const Login = () => {
   });
 
   const [info, setInfo] = useState({
-    email: "",
+    username: "",
     pw: "",
     correct: true,
   });
@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}login/`, {
-        email: info.email,
+        username: info.username,
         password: info.pw,
       })
       .then((response) => {
@@ -68,8 +68,8 @@ const Login = () => {
         <Title>로그인</Title>
         <Space height="25px" />
         <Form action="#" onSubmit={handleSubmit}>
-          <Text>e-mail</Text>
-          <Input onChange={(e) => handleChange(e)} id="email" value={info.email} />
+          <Text>id</Text>
+          <Input onChange={(e) => handleChange(e)} id="username" value={info.username} />
           <Space height="29px" />
           <Text>password</Text>
           <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw} />
