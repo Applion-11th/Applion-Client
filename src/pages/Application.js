@@ -1,4 +1,4 @@
-import logo from "../assets/logoFullApply.svg";
+import logo from "../assets/logoFullApplySmall.svg";
 import logoSogang from "../assets/logoSogang.svg";
 import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
@@ -24,9 +24,9 @@ const Application = () => {
 
   return (
     <>
+      <Space height="100px" />
       {currDate >= dueDate ? (
         <OverDueFlex>
-          <Space height="20px" />
           <OverDueText>모집이 마감되었습니다.</OverDueText>
           <Space height="20px" />
           <OverDueImgContainer src={logoSogang} />
@@ -59,9 +59,8 @@ const Application = () => {
       ) : (
         <Container>
           <Flex>
-            <Space height="20px" />
             <ImgContainer src={logo} />
-            <Space height="20px" />
+            <Space height="10px" />
             <FlexRow>
               <ImgContainer src={lion} />
               <Space margin="0px 10px 0px 0px" />
@@ -114,7 +113,7 @@ const Application = () => {
                 console.log("save");
               }}
             >
-              <Button text="< 내 정보 수정하기" width="150px" height="59px" fontSize="18px" borderRadius="20px" />
+              <Button text="< 내 정보 수정하기" width="180px" height="59px" fontSize="18px" borderRadius="20px" />
             </Click>
             <Click
               onClick={() => {
@@ -123,7 +122,7 @@ const Application = () => {
             >
               <Button
                 text="지원서 제출하기 >"
-                width="150px"
+                width="180px"
                 height="59px"
                 fontSize="18px"
                 borderRadius="20px"
