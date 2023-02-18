@@ -81,9 +81,6 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
             <Text>멋쟁이 사자처럼 11기 아기사자들은</Text>
             <Text>TECHIT 사이트에서 진행되는 개발 강의를 듣습니다.</Text>
             <Space height="30px" />
-            <Click onClick={window.open("https://techit.education/", "_blank")}>
-              <Button text="TECHIT 둘러보기" fontSize="18px" width="200px" height="56px" borderRadius="16px" />
-            </Click>
           </TextCenter>
         </TextContainer>
       </div>
