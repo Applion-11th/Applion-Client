@@ -59,6 +59,7 @@ const Info = () => {
   };
 
   const moreInfoSubmit = (e) => {
+    e.preventDefault();
     axios
       .patch(
         `${process.env.REACT_APP_SERVER_URL}user/`,
@@ -79,6 +80,7 @@ const Info = () => {
       .then((response) => {
         if (response.status === 200) {
           navigate("/apply");
+          console.log(moreInfo);
         }
       })
       .catch((error) => {
@@ -105,25 +107,25 @@ const Info = () => {
           <FlexRow>
             <FlexCol>
               <Text>이름</Text>
-              <Input width="188px" id="name" value={moreInfo.name} onChange={(e) => handleChange(e)} />
+              <Input width="188px" id="name" value={moreInfo.name || ""} onChange={(e) => handleChange(e)} />
             </FlexCol>
             <FlexCol>
               <Text>학번</Text>
-              <Input width="188px" id="student_num" value={moreInfo.student_num} onChange={(e) => handleChange(e)} />
+              <Input width="188px" id="student_num" value={moreInfo.student_num || ""} onChange={(e) => handleChange(e)} />
             </FlexCol>
           </FlexRow>
           <Space height="10px" />
           <Text>2023학년도 1학기 기준 학기 (예시: 5학기)</Text>
-          <Input id="semester" value={moreInfo.semester} onChange={(e) => handleChange(e)} />
+          <Input id="semester" value={moreInfo.semester || ""} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>전공</Text>
-          <Input id="major" value={moreInfo.major} onChange={(e) => handleChange(e)} />
+          <Input id="major" value={moreInfo.major || ""} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>전화번호 (예시: 010-1234-5678)</Text>
-          <Input id="phone_num" value={moreInfo.phone_num} onChange={(e) => handleChange(e)} />
+          <Input id="phone_num" value={moreInfo.phone_num || ""} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>지원 트랙 선택</Text>
-          <SelectTrack onSelected={handleSelected} />
+          <SelectTrack onSelected={handleSelected} value={moreInfo.position || ""} onChange={(e) => handleChange(e)}/>
           <Space height="18px" />
           <Click onClick={moreInfoSubmit}>
             <Button
