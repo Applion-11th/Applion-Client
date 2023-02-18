@@ -40,7 +40,7 @@ const Info = () => {
           console.log(error.request.response);
         });
     }
-  });
+  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
