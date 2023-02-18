@@ -12,7 +12,7 @@ export const SelectTrack = ({ onSelected }) => {
 
   return (
     <>
-      <SelectContainer onChange={handleSelect} value={selected}>
+      <SelectContainer required onChange={handleSelect} value={selected}>
         <SelectOption value="" disabled={true}>
           지원트랙을 선택해주세요
         </SelectOption>
