@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.svg";
 import styled from "styled-components";
-import { Button } from "../atoms";
+import { Button, Space } from "../atoms";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -27,28 +27,31 @@ export const Header = () => {
   };
 
   return (
-    <HeaderContainer>
-      <InnerContainer>
-        {display ? (
-          <Click onClick={gotoMain}>
-            <LogoContainer src={logo} />
-          </Click>
-        ) : (
-          <Holder />
-        )}
-        {!display ? (
-          <ButtonContainer onClick={gotoApply}>
-            <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
-          </ButtonContainer>
-        ) : localStorage.getItem("access_token") ? (
-          <ButtonContainer onClick={handleLogout}>
-            <Button text="로그아웃" fontSize="18px" width="130px" height="48px" borderRadius="20px" />
-          </ButtonContainer>
-        ) : (
-          <Holder />
-        )}
-      </InnerContainer>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <InnerContainer>
+          {display ? (
+            <Click onClick={gotoMain}>
+              <LogoContainer src={logo} />
+            </Click>
+          ) : (
+            <Holder />
+          )}
+          {!display ? (
+            <ButtonContainer onClick={gotoApply}>
+              <Button text="지금 바로 지원하기" fontSize="18px" width="210px" height="59px" borderRadius="20px" />
+            </ButtonContainer>
+          ) : localStorage.getItem("access_token") ? (
+            <ButtonContainer onClick={handleLogout}>
+              <Button text="로그아웃" fontSize="18px" width="130px" height="48px" borderRadius="20px" />
+            </ButtonContainer>
+          ) : (
+            <Holder />
+          )}
+        </InnerContainer>
+      </HeaderContainer>
+      <Space height="70px" />
+    </>
   );
 };
 

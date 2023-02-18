@@ -24,7 +24,6 @@ const Application = () => {
 
   return (
     <>
-      <Space height="100px" />
       {currDate >= dueDate ? (
         <OverDueFlex>
           <OverDueText>모집이 마감되었습니다.</OverDueText>
