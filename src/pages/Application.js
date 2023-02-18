@@ -31,6 +31,7 @@ const Application = () => {
             console.log(response.data);
             setQuestions({
               ...questions,
+              updated_at: response.data.updated_at,
               app1: response.data.app1,
               app2: response.data.app2,
               app3: response.data.app3,
@@ -61,10 +62,12 @@ const Application = () => {
   };
 
   const applicationSubmit = (e) => {
+    e.preventDefault();
     axios
       .patch(
         `${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`,
         {
+          updated_at: questions.updated_at,
           app1: questions.app1,
           app2: questions.app2,
           app3: questions.app3,
@@ -79,6 +82,7 @@ const Application = () => {
       )
       .then((response) => {
         if (response.status === 200) {
+          console.log('gotocomplete');
           navigate("/complete");
         }
       })
