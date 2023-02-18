@@ -39,7 +39,7 @@ const Flex = styled.div`
   align-items: flex-end;
 `;
 
-const InputApplyContainer = styled.input`
+const InputApplyContainer = styled.textarea`
   width: 80vw;
   height: 280px;
   border: 1px solid gray;
