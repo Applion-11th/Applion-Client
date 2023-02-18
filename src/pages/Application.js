@@ -31,6 +31,7 @@ const Application = () => {
             console.log(response.data);
             setQuestions({
               ...questions,
+              updated_at: response.data.updated_at,
               app1: response.data.app1,
               app2: response.data.app2,
               app3: response.data.app3,
@@ -61,10 +62,12 @@ const Application = () => {
   };
 
   const applicationSubmit = (e) => {
+    e.preventDefault();
     axios
       .patch(
         `${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`,
         {
+          updated_at: questions.updated_at,
           app1: questions.app1,
           app2: questions.app2,
           app3: questions.app3,
@@ -79,6 +82,7 @@ const Application = () => {
       )
       .then((response) => {
         if (response.status === 200) {
+          console.log('gotocomplete');
           navigate("/complete");
         }
       })
@@ -149,14 +153,14 @@ const Application = () => {
                   1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요.
                   (500자 이내)
                 </Text>
-                <InputApply value={questions.app1} id="app1" onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app1 || ""} id="app1" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
                   2. 파트를 선택한 이유와 관련 경험을 해본 적이 있는지, 그리고 이 파트를 통해 어떠한 성장을 희망하시는지
                   작성해주세요. (500자 이내)
                 </Text>
-                <InputApply value={questions.app2} id="app2" onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app2 || ""} id="app2" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
@@ -164,7 +168,7 @@ const Application = () => {
                   팀워크를 진행해보았던 경험과, 그 경험을 멋쟁이 사자처럼 대학에서 어떻게 적용시킬 수 있을지
                   작성해주세요. (500자 이내)
                 </Text>
-                <InputApply value={questions.app3} id="app3" onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app3 || ""} id="app3" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
@@ -172,14 +176,14 @@ const Application = () => {
                   필요합니다. 활동 기간동안 얼마나 열정적으로, 매주 얼만큼의 시간을 할애하실 수 있는지 작성해주세요.
                   (500자 이내)
                 </Text>
-                <InputApply value={questions.app4} id="app4" onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app4 || ""} id="app4" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <FlexEnd>
                   <Text>+ Github 계정 링크 (선택)</Text>
                   <Text>*계정 정보는 서류 평가 점수에 반영되지 않습니다.</Text>
                 </FlexEnd>
-                <InputGit value={questions.github} id="github" onChange={(e) => handleChange(e)} />
+                <InputGit value={questions.github || ""} id="github" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
             </Flex>
             <Space height="40px" />

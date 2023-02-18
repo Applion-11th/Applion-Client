@@ -10,14 +10,15 @@ import palette from "../../styles/colors";
 export const Overlay = forwardRef(({ caption, scroll }, ref) => (
   <div
     ref={ref}
+    
     onScroll={(e) => {
       scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
       caption.current.innerText = scroll.current.toFixed(2);
     }}
-    class="scroll"
+    className="scroll"
   >
     <div style={{ height: "200vh", display: "flex", justifyContent: "center" }}>
-      <div class="dot">
+      <div className="dot">
         <Section1>
           <CenterContainer>
             <Space height="100px" />
@@ -33,7 +34,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "start" }}>
-      <div class="dot">
+      <div className="dot">
         <Section2>
           <FlexStart>
             <Space height="100px" />
@@ -51,7 +52,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "end" }}>
-      <div class="dot">
+      <div className="dot">
         <Section3>
           <RowContainer>
             <Space margin="100px 120px 0px 0px" />
@@ -69,7 +70,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "center" }}>
-      <div class="dot">
+      <div className="dot">
         <TextContainer>
           <Space height="100px" />
           <TextCenter>
@@ -86,7 +87,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "start" }}>
-      <div class="dot">
+      <div className="dot">
         <Textbox>
           <Space height="100px" />
           <TextboxBold>01 | 서비스 구현에 필요한 기본적인 개발지식을 배웁니다</TextboxBold>
@@ -120,7 +121,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "center" }}>
-      <div class="dot">
+      <div className="dot">
         <TextCenter>
           <Space height="200px" />
           <TextBold>내 아이디어를</TextBold>
@@ -132,7 +133,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <div style={{ height: "200vh", display: "flex", justifyContent: "center" }}>
-      <div class="dot">
+      <div className="dot">
         <Space height="200px" />
         <LogoFooterContainer src={logoFooter} />
       </div>
