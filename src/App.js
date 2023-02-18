@@ -14,7 +14,6 @@ import Register from "./pages/Register";
 import Info from "./pages/Info";
 import Application from "./pages/Application";
 import Complete from "./pages/Complete";
-import Test from "./pages/Test";
 import KaKao from "./pages/Kakao";
 
 const App = () => {
@@ -41,7 +40,6 @@ const App = () => {
               <Route path="/complete" element={<Complete />} />
               <Route path="/info" element={<Info />} />
               <Route path="/apply" element={<Application />} />
-              <Route path="/test" element={<Test />} />
               <Route path="/kakao/callback" element={<KaKao />} />
             </Routes>
           </BrowserRouter>
