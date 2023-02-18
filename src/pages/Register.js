@@ -28,7 +28,6 @@ const Register = () => {
       .then((response) => {
         if (response.status === 201) {
           localStorage.setItem("access_token", response.data.access_token);
-          localStorage.setItem("id", response.data.user.id);
           navigate("/info");
         }
       })

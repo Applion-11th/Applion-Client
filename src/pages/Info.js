@@ -15,9 +15,6 @@ const Info = () => {
     position: "",
   });
 
-  const navigate = useNavigate();
-
-
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
       axios
@@ -88,6 +85,7 @@ const Info = () => {
         console.log(error.request.response);
       });
   };
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {
