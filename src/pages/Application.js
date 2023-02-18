@@ -18,6 +18,9 @@ const Application = () => {
     github: null,
   });
 
+  const username = localStorage.getItem("user");
+  console.log(username);
+
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
       axios
@@ -28,7 +31,6 @@ const Application = () => {
         })
         .then((response) => {
           if (response.status === 200) {
-            console.log("working");
             setQuestions({
               ...questions,
               app1: response.data.app1,
@@ -43,7 +45,7 @@ const Application = () => {
           console.log(error.request.response);
         });
     }
-  });
+  }, [questions]);
 
   const FINALDATE = "2023-03-09T23:59:59";
   const navigate = useNavigate();
