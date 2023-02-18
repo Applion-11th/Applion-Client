@@ -2,7 +2,7 @@ import logo from "../assets/logoFullApplySmall.svg";
 import logoSogang from "../assets/logoSogang.svg";
 import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
-import { Button, Space } from "../components/atoms";
+import { Button, Space, InputGit } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -179,7 +179,7 @@ const Application = () => {
                   <Text>+ Github 계정 링크 (선택)</Text>
                   <Text>*계정 정보는 서류 평가 점수에 반영되지 않습니다.</Text>
                 </FlexEnd>
-                <InputGit />
+                <InputGit value={questions.github} id="github" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
             </Flex>
             <Space height="40px" />
@@ -262,25 +262,6 @@ const FinalMent = styled.div`
   margin-bottom: 30px;
   font-size: 24px;
   font-weight: 700;
-`;
-
-const InputGit = styled.input`
-  width: 80vw;
-  height: 20px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  padding: 15px 15px 15px 15px;
-  font-family: Pretendard;
-  font-size: 20px;
-  background-color: black;
-  color: white;
-  caret-color: white;
-  margin: 15px 0px 10px 0px;
-  resize: none;
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 const FlexEnd = styled.div`
