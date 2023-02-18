@@ -73,6 +73,7 @@ const Text = styled.div`
 `;
 
 const LogoContainer = styled.img`
+  width: 90vw;
   padding-bottom: 50px;
 `;
 

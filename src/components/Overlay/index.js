@@ -139,12 +139,16 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
       </div>
     </div>
     <LogoEnd>
-      <LogoContainer src={logoApply} />
+      <LogoBottomContainer src={logoApply} />
     </LogoEnd>
   </div>
 ));
 
 const LogoContainer = styled.img``;
+
+const LogoBottomContainer = styled.img`
+  width: 90vw;
+`;
 
 const Section1 = styled.div`
   display: flex;
@@ -256,8 +260,6 @@ const LogoFooterContainer = styled.img`
   height: 132px;
 `;
 
-const Click = styled.div``;
-
 const Textbox = styled.div`
   display: flex;
   justify-content: center;
@@ -294,4 +296,5 @@ const LogoEnd = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  overflow: hidden;
 `;
