@@ -10,9 +10,7 @@ export const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      setDisplay(false);
-    }
+    location.pathname === "/" ? setDisplay(false) : setDisplay(true);
   }, [location.pathname]);
 
   const gotoMain = () => {
