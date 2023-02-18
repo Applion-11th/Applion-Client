@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import logoSogang from "../assets/logoSogang.svg";
 import { Space, Button } from "../components/atoms";
@@ -53,8 +53,7 @@ const Complete = () => {
         <Space height="20px" />
         <Text>지원 완료되었습니다.</Text>
         <Space height="20px" />
-        {/* <TextMedium>최종 수정 시각: 2023년 3월 8일 17시 23분</TextMedium> */}
-        <Showdate/>
+        <TextMedium>최종 제출 시각: 2023년 3월 8일 17시 23분</TextMedium>
         <Space height="20px" />
         <ImgContainer src={logoSogang} />
         <Description>
@@ -63,12 +62,12 @@ const Complete = () => {
           </TextContainer>
           <Space height="10px" />
           <TextContainer>
-            <Space margin="0px 36px 0px 0px" />
+            {/* <Space margin="0px 36px 0px 0px" /> */}
             <TextMedium>면접 | 2023년 3월 15일(수) - 2023년 3월 17일(금)</TextMedium>
           </TextContainer>
           <Space height="10px" />
           <TextContainer>
-            <Space margin="0px 80px 0px 0px" />
+            {/* <Space margin="0px 80px 0px 0px" /> */}
             <TextSmall>서류 발표 후, 면접 날짜 선택</TextSmall>
           </TextContainer>
           <Space height="10px" />

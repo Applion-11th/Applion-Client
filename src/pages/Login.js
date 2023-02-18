@@ -86,10 +86,10 @@ const Login = () => {
         <Space height="25px" />
         <Form action="#" onSubmit={handleSubmit} onKeyDown={onCheckEnter}>
           <Text>id</Text>
-          <Input onChange={(e) => handleChange(e)} id="username" value={info.username} />
+          <Input onChange={(e) => handleChange(e)} id="username" value={info.username || ""} />
           <Space height="29px" />
           <Text>password</Text>
-          <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw} />
+          <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw || ""} />
           <Space height="9px" />
           {info.correct ? (
             <></>
