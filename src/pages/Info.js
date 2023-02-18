@@ -36,7 +36,7 @@ const Info = () => {
             });
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error.request.response);
         });
     }
@@ -99,12 +99,8 @@ const Info = () => {
       <Flex>
         <Title>지원자 정보</Title>
         <Space height="10px" />
-        <Description>
-          리크루팅 용도로 사용될 정보입니다.
-          <br />
-          리크루팅 이후 안전하게 폐기될 예정입니다.
-        </Description>
-        <Space height="10px" />
+        <Description>리크루팅으로 사용될 정보로, 이후 안전하게 폐기될 예정입니다.</Description>
+        <Space height="20px" />
         <Form>
           <FlexRow>
             <FlexCol>
@@ -128,19 +124,19 @@ const Info = () => {
           <Space height="10px" />
           <Text>지원 트랙 선택</Text>
           <SelectTrack onSelected={handleSelected} />
+          <Space height="18px" />
+          <Click onClick={moreInfoSubmit}>
+            <Button
+              width="459px"
+              height="47px"
+              text="지원자 정보 기입 완료"
+              fontSize="18px"
+              borderRadius="10px"
+              type="submit"
+            />
+            <Space height="10px" />
+          </Click>
         </Form>
-        <Space height="18px" />
-        <Click onClick={moreInfoSubmit}>
-          <Button
-            width="459px"
-            height="47px"
-            text="지원자 정보 기입 완료"
-            fontSize="18px"
-            borderRadius="10px"
-            type="submit"
-          />
-          <Space height="10px" />
-        </Click>
       </Flex>
     </>
   );
@@ -155,12 +151,12 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
 `;
 
 const Text = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 5px;
   padding-bottom: 5px;
