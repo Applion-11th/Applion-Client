@@ -20,7 +20,7 @@ const Info = () => {
       axios
         .get(`${process.env.REACT_APP_SERVER_URL}user/`, {
           headers: {
-            Authorization: `Bearer${localStorage.getItem("access_token")}`,
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         })
         .then((response) => {
@@ -36,7 +36,7 @@ const Info = () => {
             });
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error.request.response);
         });
     }
@@ -72,7 +72,7 @@ const Info = () => {
         },
         {
           headers: {
-            Authorization: `Bearer${localStorage.getItem("access_token")}`,
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         }
       )
@@ -81,7 +81,7 @@ const Info = () => {
           navigate("/apply");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error.request.response);
       });
   };

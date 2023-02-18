@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Space } from "../atoms";
 
-export const InputApply = () => {
+export const InputApply = (props) => {
+  const { onChange, value, id } = props;
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
 
@@ -14,6 +15,7 @@ export const InputApply = () => {
   }, [text]);
 
   const changeHandler = (e) => {
+    onChange(e);
     if (e.target.value.length > 499) {
       setText(e.target.value.slice(0, 499));
     }
