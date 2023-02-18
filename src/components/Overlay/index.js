@@ -1,12 +1,13 @@
 import React, { forwardRef } from "react";
-import { Button, Space } from "../components/atoms";
+import { Button, Space } from "../atoms";
 import styled from "styled-components";
-import logoFull from "../assets/logoFull.svg";
-import logoFooter from "../assets/logoFooter.svg";
-import "../styles/styles.css";
-import palette from "../styles/colors";
+import logoFull from "../../assets/logoFull.svg";
+import logoApply from "../../assets/logoFullApply.svg";
+import logoFooter from "../../assets/logoFooter.svg";
+import "../../styles/styles.css";
+import palette from "../../styles/colors";
 
-const Overlay = forwardRef(({ caption, scroll }, ref) => (
+export const Overlay = forwardRef(({ caption, scroll }, ref) => (
   <div
     ref={ref}
     onScroll={(e) => {
@@ -139,10 +140,11 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
         <LogoFooterContainer src={logoFooter} />
       </div>
     </div>
+    <LogoEnd>
+      <LogoContainer src={logoApply} />
+    </LogoEnd>
   </div>
 ));
-
-export default Overlay;
 
 const LogoContainer = styled.img``;
 
@@ -251,24 +253,6 @@ const TextCenter = styled.div`
   text-align: center;
 `;
 
-const Section4 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  height: 120vh;
-  width: 100vw;
-`;
-
-const Section5 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-`;
-
 const LogoFooterContainer = styled.img`
   width: 524px;
   height: 132px;
@@ -307,21 +291,9 @@ const SmallList = styled.li`
   font-family: Pretendard;
 `;
 
-const MaximumContainer = styled.div`
+const LogoEnd = styled.div`
+  margin-bottom: 250px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
+  width: 100%;
   justify-content: center;
-  background-color: black;
-  border-radius: 16px;
-  border: 1px solid gray;
-`;
-
-const LogoSmallContainer = styled.img`
-  width: 120px;
 `;
