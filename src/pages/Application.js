@@ -11,26 +11,24 @@ import axios from "axios";
 const Application = () => {
   const [questions, setQuestions] = useState({
     updated_at: "",
-    app1: null,
-    app2: null,
-    app3: null,
-    app4: null,
-    github: null,
+    app1: "",
+    app2: "",
+    app3: "",
+    app4: "",
+    github: "",
   });
-
-  const username = localStorage.getItem("user");
-  console.log(username);
 
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
       axios
-        .get(`${process.env.REACT_APP_SERVER_APPLY_URL}`, {
+        .get(`${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         })
         .then((response) => {
           if (response.status === 200) {
+            console.log(response.data);
             setQuestions({
               ...questions,
               app1: response.data.app1,
@@ -45,7 +43,7 @@ const Application = () => {
           console.log(error.request.response);
         });
     }
-  }, [questions]);
+  }, []);
 
   const FINALDATE = "2023-03-09T23:59:59";
   const navigate = useNavigate();
@@ -62,16 +60,16 @@ const Application = () => {
     });
   };
 
-  const moreInfoSubmit = (e) => {
+  const applicationSubmit = (e) => {
     axios
       .patch(
-        `${process.env.REACT_APP_SERVER_APPLY_URL}`,
+        `${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`,
         {
-          app1: questions.data.app1,
-          app2: questions.data.app2,
-          app3: questions.data.app3,
-          app4: questions.data.app4,
-          github: questions.data.github,
+          app1: questions.app1,
+          app2: questions.app2,
+          app3: questions.app3,
+          app4: questions.app4,
+          github: questions.github,
         },
         {
           headers: {
@@ -151,14 +149,14 @@ const Application = () => {
                   1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요.
                   (500자 이내)
                 </Text>
-                <InputApply value={questions.app1} onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app1} id="app1" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
                   2. 파트를 선택한 이유와 관련 경험을 해본 적이 있는지, 그리고 이 파트를 통해 어떠한 성장을 희망하시는지
                   작성해주세요. (500자 이내)
                 </Text>
-                <InputApply value={questions.app2} onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app2} id="app2" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
@@ -166,7 +164,7 @@ const Application = () => {
                   팀워크를 진행해보았던 경험과, 그 경험을 멋쟁이 사자처럼 대학에서 어떻게 적용시킬 수 있을지
                   작성해주세요. (500자 이내)
                 </Text>
-                <InputApply value={questions.app3} onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app3} id="app3" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
@@ -174,7 +172,7 @@ const Application = () => {
                   필요합니다. 활동 기간동안 얼마나 열정적으로, 매주 얼만큼의 시간을 할애하실 수 있는지 작성해주세요.
                   (500자 이내)
                 </Text>
-                <InputApply value={questions.app4} onChange={(e) => handleChange(e)} />
+                <InputApply value={questions.app4} id="app4" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
               <FormInnerContainer>
                 <FlexEnd>
@@ -193,7 +191,7 @@ const Application = () => {
               >
                 <Button text="< 내 정보 수정하기" width="180px" height="59px" fontSize="18px" borderRadius="20px" />
               </Click>
-              <Click onClick={moreInfoSubmit}>
+              <Click onClick={applicationSubmit}>
                 <Button
                   text="지원서 제출하기 >"
                   width="180px"
@@ -266,7 +264,7 @@ const FinalMent = styled.div`
   font-weight: 700;
 `;
 
-const InputGit = styled.textarea`
+const InputGit = styled.input`
   width: 80vw;
   height: 20px;
   border: 1px solid gray;

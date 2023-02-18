@@ -25,7 +25,7 @@ export const InputApply = (props) => {
   return (
     <>
       <Flex>
-        <InputApplyContainer required onChange={(e) => changeHandler(e)} maxLength="500" />
+        <InputApplyContainer value={value} id={id} required onChange={(e) => changeHandler(e)} maxLength="500" />
         <CountContainer>{count}/500자</CountContainer>
         <Space height="20px" />
       </Flex>
@@ -39,7 +39,7 @@ const Flex = styled.div`
   align-items: flex-end;
 `;
 
-const InputApplyContainer = styled.textarea`
+const InputApplyContainer = styled.input`
   width: 80vw;
   height: 280px;
   border: 1px solid gray;
