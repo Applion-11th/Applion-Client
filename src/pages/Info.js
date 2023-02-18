@@ -40,7 +40,7 @@ const Info = () => {
           console.log(error.request.response);
         });
     }
-  });
+  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -81,7 +81,7 @@ const Info = () => {
           navigate("/apply");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error.request.response);
       });
   };
