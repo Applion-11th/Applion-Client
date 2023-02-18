@@ -191,7 +191,9 @@ const Application = () => {
               <Click
                 onClick={() => {
                   console.log("save");
+                  navigate('/info');
                 }}
+                
               >
                 <Button text="< 내 정보 수정하기" width="180px" height="59px" fontSize="18px" borderRadius="20px" />
               </Click>
