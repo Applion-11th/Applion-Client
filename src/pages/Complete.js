@@ -3,8 +3,36 @@ import styled from "styled-components";
 import logoSogang from "../assets/logoSogang.svg";
 import { Space, Button } from "../components/atoms";
 import { useNavigate } from "react-router-dom";
+import axios, { AxiosHeaders } from "axios";
 
 const Complete = () => {
+  const Showdate = () => {
+    var lastChange = new Date();
+    axios
+    .get(`${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
+        lastChange = new Date(response.data.updated_at);
+      }
+    })
+    .catch((error) => {
+      console.log(error.request.response);
+    });
+    const year = lastChange.getFullYear();
+    const month = lastChange.getMonth() + 1;
+    const date = lastChange.getDate();
+    const hour = lastChange.getHours();
+    const min = lastChange.getMinutes();
+    console.log(date);
+    return (
+      <TextMedium>최종 수정 시각: {`${year}년 ${month}월 ${date}일 ${hour}시 ${min}분`}</TextMedium>
+   )
+  }
   const navigate = useNavigate();
   const gotoApplication = () => {
     navigate("/apply");
@@ -17,7 +45,7 @@ const Complete = () => {
     if (!localStorage.getItem("access_token")) {
       navigate("/login");
     }
-  });
+  }, []);
 
   return (
     <>

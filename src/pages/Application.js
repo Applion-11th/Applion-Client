@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Application = () => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState({
     updated_at: "",
     app1: "",
@@ -47,10 +48,12 @@ const Application = () => {
   }, []);
 
   const FINALDATE = "2023-03-09T23:59:59";
-  const navigate = useNavigate();
   const gotoMain = () => {
     navigate("/");
   };
+  const gotoComplete = () => {
+    navigate("/complete");
+  }
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -62,6 +65,11 @@ const Application = () => {
   };
 
   const applicationSubmit = (e) => {
+    const date = new Date();
+    const isoString = date.toISOString();
+    const formattedString = isoString.replace("Z", "+09:00");
+    console.log(formattedString);
+    console.log(questions);
     e.preventDefault();
     axios
       .patch(
@@ -73,6 +81,7 @@ const Application = () => {
           app3: questions.app3,
           app4: questions.app4,
           github: questions.github,
+          updated_at: formattedString,
         },
         {
           headers: {
@@ -88,7 +97,7 @@ const Application = () => {
       })
       .catch((error) => {
         console.log(error.request.response);
-      });
+      })
   };
 
   const currDate = new Date().toLocaleDateString();
@@ -98,7 +107,7 @@ const Application = () => {
     if (!localStorage.getItem("access_token")) {
       navigate("/login");
     }
-  });
+  }, []);
 
   return (
     <>
@@ -191,11 +200,15 @@ const Application = () => {
               <Click
                 onClick={() => {
                   console.log("save");
+                  navigate("/info");
                 }}
               >
                 <Button text="< 내 정보 수정하기" width="180px" height="59px" fontSize="18px" borderRadius="20px" />
               </Click>
-              <Click onClick={applicationSubmit}>
+              <Click onClick={() => {
+                applicationSubmit();
+                gotoComplete();
+              }}>
                 <Button
                   text="지원서 제출하기 >"
                   width="180px"
