@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import logoSogang from "../assets/logoSogang.svg";
-import { Space, Button } from "../components/atoms";
+import { Space, Button, Loading } from "../components/atoms";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,11 +11,14 @@ const Complete = () => {
   const [day, setDay] = useState();
   const [time, setTime] = useState();
   const [minute, setMinute] = useState();
+  const [loading, setLoading] = useState(null);
   const navigate = useNavigate();
   const gotoApplication = () => {
+    setLoading(true);
     navigate("/apply");
   };
   const gotoMain = () => {
+    setLoading(true);
     navigate("/");
   };
 
@@ -61,6 +64,7 @@ const Complete = () => {
     <>
       <Flex>
         <Space height="10px" />
+        {loading && <Loading/>}
         <Text>지원 완료되었습니다.</Text>
         <Space height="20px" />
         <ShowChangedate />

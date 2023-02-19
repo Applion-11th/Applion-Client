@@ -1,4 +1,4 @@
-import { Input, Button, Space, InputPwd } from "../components/atoms";
+import { Input, Button, Space, InputPwd, Loading } from "../components/atoms";
 import styled from "styled-components";
 import { BsFillChatFill } from "react-icons/bs";
 import { CgDanger } from "react-icons/cg";
@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import palette from "../styles/colors";
 
 const Login = () => {
+
+  const [loading, setLoading] = useState(null);
+
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
       navigate("/apply");
@@ -26,6 +29,7 @@ const Login = () => {
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    setLoading(true);
     window.location.replace(KAKAO_AUTH_URL);
   };
 
@@ -36,6 +40,7 @@ const Login = () => {
   });
 
   const goToRegister = () => {
+    setLoading(true);
     navigate("/register");
   };
 
@@ -47,6 +52,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     if (e && e.preventDefault) {
+      setLoading(true);
       e.preventDefault();
     }
 
@@ -81,6 +87,7 @@ const Login = () => {
   return (
     <>
       <Space height="50px" />
+      {loading && <Loading/>}
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />

@@ -2,13 +2,14 @@ import logo from "../assets/logoFullApplySmall.svg";
 import logoSogang from "../assets/logoSogang.svg";
 import lion from "../assets/lionWink.svg";
 import styled from "styled-components";
-import { Button, Space, InputGit } from "../components/atoms";
+import { Button, Space, InputGit, Loading } from "../components/atoms";
 import { InputApply, CountdownTimer } from "../components";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Application = () => {
+  const [loading, setLoading] = useState(null);
   const [questions, setQuestions] = useState({
     updated_at: "",
     app1: "",
@@ -63,6 +64,7 @@ const Application = () => {
   };
 
   const applicationSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     const myDate = new Date();
     const submitDate = myDate.toISOString();
@@ -108,6 +110,7 @@ const Application = () => {
 
   return (
     <>
+      {loading && <Loading/>}
       {currDate >= dueDate ? (
         <OverDueFlex>
           <OverDueText>모집이 마감되었습니다.</OverDueText>
@@ -196,6 +199,7 @@ const Application = () => {
             <ButtonContainer>
               <Click
                 onClick={() => {
+                  setLoading(true);
                   console.log("save");
                   navigate("/info");
                 }}

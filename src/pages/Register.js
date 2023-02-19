@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Button, Space, InputPwd } from "../components/atoms";
+import { Input, Button, Space, InputPwd, Loading } from "../components/atoms";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +7,7 @@ import palette from "../styles/colors";
 import Modal from "../components/atoms/Modal";
 
 const Register = () => {
+  const [loading, setLoading] = useState(null);
   const [info, setInfo] = useState({
     username: "",
     pw1: "",
@@ -18,6 +19,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}registration/`, {
@@ -130,6 +132,7 @@ const Register = () => {
   return (
     <div style={{ position: "relative" }}>
       <Space height="50px" />
+      {loading && <Loading/>}
       <Flex>
         <Title>회원가입</Title>
         <Modal isMount={isModal} onClick={showModal} />

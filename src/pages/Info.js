@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Input, Button, Space } from "../components/atoms";
+import { Input, Button, Space, Loading } from "../components/atoms";
 import { SelectTrack } from "../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Info = () => {
+  const [loading, setLoading] = useState(null);
   const [moreInfo, setmoreInfo] = useState({
     name: "",
     student_num: "",
@@ -59,6 +60,7 @@ const Info = () => {
   };
 
   const moreInfoSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     axios
       .patch(
@@ -99,6 +101,7 @@ const Info = () => {
   return (
     <>
       <Space height="10px" />
+      {loading && <Loading/>}
       <Flex>
         <Title>지원자 정보</Title>
         <Space height="10px" />

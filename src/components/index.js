@@ -3,4 +3,4 @@ export * from "./InputApply";
 export * from "./CountdownTimer";
 export * from "./SelectTrack";
 export * from "./Overlay";
-export * from "./Model";
+export * from "./atoms/Model";
