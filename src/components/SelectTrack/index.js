@@ -12,12 +12,12 @@ export const SelectTrack = ({ onSelected, value }) => {
 
   return (
     <>
-      <SelectContainer required onChange={handleSelect} value={selected}>
+      <SelectContainer required onChange={handleSelect} defaultValue={value}>
         <SelectOption value="" disabled={true}>
           지원트랙을 선택해주세요
         </SelectOption>
-        {selectList.map((item, idx) => (
-          <SelectOption value={value} key={idx}>
+        {selectList.map((item) => (
+          <SelectOption value={item} key={item}>
             {item}
           </SelectOption>
         ))}
