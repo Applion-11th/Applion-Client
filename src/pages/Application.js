@@ -64,11 +64,13 @@ const Application = () => {
 
   const applicationSubmit = (e) => {
     e.preventDefault();
+    const myDate = new Date();
+    const submitDate = myDate.toISOString();
     axios
       .patch(
         `${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`,
         {
-          updated_at: questions.updated_at,
+          updated_at: submitDate,
           app1: questions.app1,
           app2: questions.app2,
           app3: questions.app3,
