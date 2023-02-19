@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import uuid from "react-uuid";
 
 export const SelectTrack = ({ onSelected, value }) => {
   const selectList = ["백엔드", "프론트엔드"];
@@ -12,14 +13,12 @@ export const SelectTrack = ({ onSelected, value }) => {
 
   return (
     <>
-      <SelectContainer required onChange={handleSelect} value={selected}>
+      <SelectContainer required onChange={handleSelect} key={uuid()} defaultValue={value}>
         <SelectOption value="" disabled={true}>
           지원트랙을 선택해주세요
         </SelectOption>
-        {selectList.map((item, idx) => (
-          <SelectOption value={value} key={idx}>
-            {item}
-          </SelectOption>
+        {selectList.map((item) => (
+          <SelectOption value={item}>{item}</SelectOption>
         ))}
       </SelectContainer>
     </>
