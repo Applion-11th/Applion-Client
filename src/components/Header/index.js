@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button, Space } from "../atoms";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -13,17 +14,32 @@ export const Header = () => {
     location.pathname === "/" ? setDisplay(false) : setDisplay(true);
   }, [location.pathname]);
 
-  const gotoMain = () => {
-    navigate("/");
-  };
-
   const gotoApply = () => {
     localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    gotoMain();
+  const gotoMain = () => {
+    navigate("/");
+  };
+  const handleLogout = (e) => {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}logout/`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("id");
+          gotoMain();
+        }
+      })
+      .catch((error) => {
+        console.log(error.request.response);
+      });
   };
 
   return (
@@ -50,6 +66,7 @@ export const Header = () => {
           )}
         </InnerContainer>
       </HeaderContainer>
+      {display ? <Space height="70px" /> : <></>}
     </>
   );
 };

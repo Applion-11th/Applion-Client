@@ -59,7 +59,7 @@ const Login = () => {
         if (response.status === 200) {
           localStorage.setItem("access_token", response.data.access_token);
           localStorage.setItem("id", response.data.user.id);
-          console.log(localStorage.getItem("id"));
+          localStorage.setItem("position", response.data.user.position);
           navigate("/info");
         }
       })
