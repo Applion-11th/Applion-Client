@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export const SelectTrack = ({ onSelected }) => {
+export const SelectTrack = ({ onSelected, value }) => {
   const selectList = ["백엔드", "프론트엔드"];
   const [selected, setSelected] = useState("");
 
@@ -16,8 +16,8 @@ export const SelectTrack = ({ onSelected }) => {
         <SelectOption value="" disabled={true}>
           지원트랙을 선택해주세요
         </SelectOption>
-        {selectList.map((item) => (
-          <SelectOption value={item} key={item}>
+        {selectList.map((item, idx) => (
+          <SelectOption value={value} key={idx}>
             {item}
           </SelectOption>
         ))}
