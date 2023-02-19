@@ -111,7 +111,12 @@ const Info = () => {
             </FlexCol>
             <FlexCol>
               <Text>학번</Text>
-              <Input width="188px" id="student_num" value={moreInfo.student_num || ""} onChange={(e) => handleChange(e)} />
+              <Input
+                width="188px"
+                id="student_num"
+                value={moreInfo.student_num || ""}
+                onChange={(e) => handleChange(e)}
+              />
             </FlexCol>
           </FlexRow>
           <Space height="10px" />
@@ -125,7 +130,7 @@ const Info = () => {
           <Input id="phone_num" value={moreInfo.phone_num || ""} onChange={(e) => handleChange(e)} />
           <Space height="10px" />
           <Text>지원 트랙 선택</Text>
-          <SelectTrack onSelected={handleSelected} value={moreInfo.position || ""} onChange={(e) => handleChange(e)}/>
+          <SelectTrack onSelected={handleSelected} value={moreInfo.position || ""} onChange={(e) => handleChange(e)} />
           <Space height="18px" />
           <Click onClick={moreInfoSubmit}>
             <Button
