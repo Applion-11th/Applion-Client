@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Button, Space, InputPwd, Loading } from "../components/atoms";
+import { Input, Button, Space, InputPwd } from "../components/atoms";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +7,6 @@ import palette from "../styles/colors";
 import Modal from "../components/atoms/Modal";
 
 const Register = () => {
-  const [loading, setLoading] = useState(null);
   const [info, setInfo] = useState({
     username: "",
     pw1: "",
@@ -19,7 +18,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    setLoading(true);
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}registration/`, {
@@ -29,10 +27,12 @@ const Register = () => {
       })
       .then((response) => {
         if (response.status === 201) {
+          if (isValid.test === false) {
+            alert("중복검사를 시행해주세요!");
+          } else {
           localStorage.setItem("access_token", response.data.access_token);
-          localStorage.setItem("id", response.data.user.id);
-          localStorage.setItem("position", response.data.user.position);
           navigate("/info");
+          }
         }
       })
       .catch((error) => {
@@ -51,27 +51,14 @@ const Register = () => {
 
     if (id === "username") {
       verifyusername(value);
-      setFilled({
-        ...filled,
-        username: true,
-      });
     } else if (id === "pw1") {
       verifyPW(value);
-      setFilled({
-        ...filled,
-        pw1: true,
-      });
     } else if (id === "pw2") {
       isPWSame(value);
-      setFilled({
-        ...filled,
-        pw2: true,
-      });
     }
   };
 
-  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true, match: false });
-  const [filled, setFilled] = useState({ username: false, pw1: false, pw2: false });
+  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: false, match: false, test: false});
 
   const verifyusername = () => {
     let usernameVal = info.username;
@@ -104,14 +91,16 @@ const Register = () => {
   };
 
   const isDuplicate = () => {
+    console.log(info.username);
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}checkid/${info.username}`, {})
       .then((response) => {
         if (response.status === 200) {
           if (response.data.is_unique) {
+            setIsValid({...isValid, duplicate: true, test: true});
             alert("사용 가능한 아이디입니다.");
           } else {
-            setIsValid({ ...isValid, duplicate: false });
+            setIsValid({ ...isValid, duplicate: false, test: true });
             alert("사용 불가능한 아이디입니다.");
           }
         }
@@ -131,7 +120,6 @@ const Register = () => {
   return (
     <div style={{ position: "relative" }}>
       <Space height="50px" />
-      {loading && <Loading/>}
       <Flex>
         <Title>회원가입</Title>
         <Modal isMount={isModal} onClick={showModal} />
@@ -191,11 +179,7 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={
-              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
-                ? palette.red
-                : "gray"
-            }
+            color={isValid.username && isValid.pw && isValid.duplicate ? palette.red : "gray"}
           />
         </Form>
       </Flex>
