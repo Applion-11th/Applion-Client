@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button, Space } from "../atoms";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -17,7 +18,10 @@ export const Header = () => {
     localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
-  const handleLogout = () => {
+  const gotoMain = () => {
+    navigate("/");
+  };
+  const handleLogout = (e) => {
     if (e && e.preventDefault) {
       e.preventDefault();
     }
@@ -30,7 +34,7 @@ export const Header = () => {
         if (response.status === 200) {
           localStorage.removeItem("access_token");
           localStorage.removeItem("id");
-          navigate("/");
+          gotoMain();
         }
       })
       .catch((error) => {
@@ -62,6 +66,7 @@ export const Header = () => {
           )}
         </InnerContainer>
       </HeaderContainer>
+      {display ? <Space height="70px" /> : <></>}
     </>
   );
 };
