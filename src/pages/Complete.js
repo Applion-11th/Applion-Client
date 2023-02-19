@@ -19,11 +19,6 @@ const Complete = () => {
     navigate("/");
   };
 
-  var Year;
-  var Month;
-  var DayDate;
-  var Time;
-  var Minute;
   const ShowChangedate = () => {
     if (localStorage.getItem("access_token")) {
       axios
