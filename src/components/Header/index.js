@@ -13,17 +13,29 @@ export const Header = () => {
     location.pathname === "/" ? setDisplay(false) : setDisplay(true);
   }, [location.pathname]);
 
-  const gotoMain = () => {
-    navigate("/");
-  };
-
   const gotoApply = () => {
     localStorage.getItem("access_token") ? navigate("/apply") : navigate("/info");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    gotoMain();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}logout/`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("id");
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.log(error.request.response);
+      });
   };
 
   return (
