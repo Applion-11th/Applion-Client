@@ -69,9 +69,6 @@ const Register = () => {
         pw2: true,
       });
     }
-    console.log("id:", isValid.username);
-    console.log("pw:", isValid.pw);
-    console.log("du:", isValid.duplicate);
   };
 
   const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: false });
