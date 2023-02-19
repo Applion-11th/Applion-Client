@@ -37,6 +37,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error.request.response);
+        alert("비밀번호가 너무 짧습니다.");
       });
   };
 
@@ -70,7 +71,7 @@ const Register = () => {
     }
   };
 
-  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true, match: false });
+  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: false, match: false });
   const [filled, setFilled] = useState({ username: false, pw1: false, pw2: false });
 
   const verifyusername = () => {
@@ -131,7 +132,7 @@ const Register = () => {
   return (
     <div style={{ position: "relative" }}>
       <Space height="50px" />
-      {loading && <Loading/>}
+      {loading && <Loading />}
       <Flex>
         <Title>회원가입</Title>
         <Modal isMount={isModal} onClick={showModal} />
@@ -143,7 +144,7 @@ const Register = () => {
           <FlexRow>
             <FlexInfo>
               <Input onChange={(e) => handleChange(e)} id="username" value={info.username} width="310px" />
-              <TextSmall>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextSmall>
+              <TextSmall>영문, 숫자를 혼합하여 8~20자로 구성</TextSmall>
             </FlexInfo>
             <Click onClick={isValid.username ? isDuplicate : ""}>
               <Button
@@ -160,7 +161,7 @@ const Register = () => {
           <Text>password</Text>
           <FlexInfo>
             <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
-            <TextSmall>영문 대소문자, 숫자를 혼합하여 8~20자로 구성</TextSmall>
+            <TextSmall>영문, 숫자를 혼합하여 8~20자로 구성</TextSmall>
           </FlexInfo>
           <Space height="5px" />
           <Text>verify password</Text>
@@ -195,6 +196,16 @@ const Register = () => {
               isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
                 ? palette.red
                 : "gray"
+            }
+            cursor={
+              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                ? "pointer"
+                : "default"
+            }
+            events={
+              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                ? "auto"
+                : "none"
             }
           />
         </Form>
