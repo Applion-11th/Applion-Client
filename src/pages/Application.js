@@ -20,8 +20,9 @@ const Application = () => {
 
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
+      const id = localStorage.getItem("id");
       axios
-        .get(`${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`, {
+        .get(`${process.env.REACT_APP_SERVER_APPLY_URL}/${id}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
@@ -84,9 +85,7 @@ const Application = () => {
       )
       .then((response) => {
         if (response.status === 200) {
-          console.log('gotocomplete');
-          console.log(questions);
-          console.log(currDate);
+          console.log("gotocomplete");
           navigate("/complete");
         }
       })
@@ -195,6 +194,7 @@ const Application = () => {
               <Click
                 onClick={() => {
                   console.log("save");
+                  navigate("/info");
                 }}
               >
                 <Button text="< 내 정보 수정하기" width="180px" height="59px" fontSize="18px" borderRadius="20px" />

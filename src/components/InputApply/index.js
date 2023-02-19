@@ -26,7 +26,7 @@ export const InputApply = (props) => {
     <>
       <Flex>
         <InputApplyContainer value={value} id={id} required onChange={(e) => changeHandler(e)} maxLength="500" />
-        <CountContainer>{count}/500자</CountContainer>
+        <CountContainer>{value ? value.length : count}/500자</CountContainer>
         <Space height="20px" />
       </Flex>
     </>

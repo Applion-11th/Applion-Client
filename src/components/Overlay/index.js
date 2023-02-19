@@ -10,12 +10,12 @@ import palette from "../../styles/colors";
 export const Overlay = forwardRef(({ caption, scroll }, ref) => (
   <div
     ref={ref}
-    
     onScroll={(e) => {
       scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
       caption.current.innerText = scroll.current.toFixed(2);
     }}
     className="scroll"
+    overflow="hidden"
   >
     <div style={{ height: "200vh", display: "flex", justifyContent: "center" }}>
       <div className="dot">
