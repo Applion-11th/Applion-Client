@@ -71,7 +71,7 @@ const Register = () => {
     }
   };
 
-  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: false, match: false });
+  const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: false });
   const [filled, setFilled] = useState({ username: false, pw1: false, pw2: false });
 
   const verifyusername = () => {
@@ -110,6 +110,7 @@ const Register = () => {
       .then((response) => {
         if (response.status === 200) {
           if (response.data.is_unique) {
+            setIsValid({ ...isValid, duplicate: true });
             alert("사용 가능한 아이디입니다.");
           } else {
             setIsValid({ ...isValid, duplicate: false });
