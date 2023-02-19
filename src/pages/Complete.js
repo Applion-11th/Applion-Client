@@ -70,11 +70,11 @@ const Complete = () => {
           </TextContainer>
           <Space height="10px" />
           <TextContainer>
-            <Space margin="0px 36px 0px 0px" />
-            <TextMedium>면접 | 2023년 3월 15일(수) - 2023년 3월 17일(금)</TextMedium>
+            <TextMedium>면접 날짜 | 2023년 3월 15일(수) - 2023년 3월 17일(금)</TextMedium>
           </TextContainer>
           <Space height="10px" />
           <TextContainer>
+            <Space margin="0px 80px 0px 0px" />
             <TextSmall>서류 발표 후, 면접 날짜 선택</TextSmall>
           </TextContainer>
           <Space height="10px" />
@@ -82,7 +82,7 @@ const Complete = () => {
             <TextMedium>최종 발표 | 2023년 3월 20일(월)</TextMedium>
           </TextContainer>
         </Description>
-        <Space height="25px" />
+        <Space height="50px" />
         <ButtonContainer>
           <Click onClick={gotoMain}>
             <Button width="167px" height="47px" text="홈으로 돌아가기" fontSize="16px" borderRadius="10px" />
@@ -132,7 +132,7 @@ const ImgContainer = styled.img`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const ButtonContainer = styled.div`
