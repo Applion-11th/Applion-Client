@@ -3,8 +3,14 @@ import styled from "styled-components";
 import logoSogang from "../assets/logoSogang.svg";
 import { Space, Button } from "../components/atoms";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Complete = () => {
+  const [year, setYear] = useState();
+  const [month, setMonth] = useState();
+  const [day, setDay] = useState();
+  const [time, setTime] = useState();
+  const [minute, setMinute] = useState();
   const navigate = useNavigate();
   const gotoApplication = () => {
     navigate("/apply");
@@ -12,6 +18,36 @@ const Complete = () => {
   const gotoMain = () => {
     navigate("/");
   };
+
+  var Year; var Month; var DayDate; var Time; var Minute;
+  const ShowChangedate = () => {
+      if (localStorage.getItem("access_token")) {
+        axios
+          .get(`${process.env.REACT_APP_SERVER_APPLY_URL}/${localStorage.getItem("id")}/`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              console.log(response);
+              const Changedate = new Date(response.data.updated_at);
+              setYear(Changedate.getFullYear());
+              setMonth(Changedate.getMonth() + 1);
+              setDay(Changedate.getDate());
+              setTime(Changedate.getHours());
+              setMinute(Changedate.getMinutes());
+              console.log(Year);
+            }
+          })
+          .catch((error) => {
+            console.log(error.request.response);
+          });
+      }
+      return (
+        <TextMedium>{`최종 제출 시각: ${year}년 ${month}월 ${day}일 ${time}시 ${minute}분`}</TextMedium>
+      )
+    };
 
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {
@@ -25,7 +61,7 @@ const Complete = () => {
         <Space height="20px" />
         <Text>지원 완료되었습니다.</Text>
         <Space height="20px" />
-        <TextMedium>최종 제출 시각: 2023년 3월 8일 17시 23분</TextMedium>
+        <ShowChangedate/>
         <Space height="20px" />
         <ImgContainer src={logoSogang} />
         <Description>
