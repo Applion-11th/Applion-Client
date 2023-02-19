@@ -269,7 +269,7 @@ const Textbox = styled.div`
 
 const TextboxBold = styled.div`
   font-family: Pretendard;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 700;
   margin-bottom: 13px;
   color: white;
