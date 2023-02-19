@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Complete = () => {
-  const [year, setYear] = useState();
-  const [month, setMonth] = useState();
-  const [day, setDay] = useState();
-  const [time, setTime] = useState();
-  const [minute, setMinute] = useState();
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [day, setDay] = useState(null);
+  const [time, setTime] = useState(null);
+  const [minute, setMinute] = useState(null);
   const [loading, setLoading] = useState(null);
   const navigate = useNavigate();
   const gotoApplication = () => {
@@ -21,7 +21,15 @@ const Complete = () => {
     setLoading(true);
     navigate("/");
   };
-
+  
+  useEffect(() => {
+    if (year === null) {
+      setLoading(1);
+    } else {
+      setLoading(0);
+    }
+  }, [year]);
+  
   const ShowChangedate = () => {
     if (localStorage.getItem("access_token")) {
       axios
@@ -56,9 +64,11 @@ const Complete = () => {
 
   return (
     <>
-      <Flex>
+      {loading===1 ? (
+        <Loading/>
+      ) : (
+        <Flex>
         <Space height="10px" />
-        {loading && <Loading/>}
         <Text>지원 완료되었습니다.</Text>
         <Space height="20px" />
         <ShowChangedate />
@@ -92,6 +102,8 @@ const Complete = () => {
           </Click>
         </ButtonContainer>
       </Flex>
+      )}
+
     </>
   );
 };
