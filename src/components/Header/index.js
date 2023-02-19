@@ -50,7 +50,6 @@ export const Header = () => {
           )}
         </InnerContainer>
       </HeaderContainer>
-      <Space height="70px" />
     </>
   );
 };
