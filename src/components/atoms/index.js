@@ -5,3 +5,4 @@ export * from "./InputGit";
 export * from "./Button";
 export * from "./DisplayDate";
 export * from "./DisplayTime";
+export * from "./Loading";
