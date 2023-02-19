@@ -113,7 +113,7 @@ export const Overlay = forwardRef(({ caption, scroll }, ref) => (
             <br />
             서로의 생각을 나누면서 성장하는 시간을 가져봅시다.
             <Space height="10px" />
-            <SmallList>nn개 대학의 멋사인들과 함께하는 해커톤</SmallList>
+            <SmallList>73개 대학의 멋사인들과 함께하는 해커톤</SmallList>
             <SmallList>서강대학교 멋사만의 해커톤 / 복커톤</SmallList>
             <SmallList>서강대, 연세대, 이화여대가 함께하는 신촌톤</SmallList>
           </Textboxsmall>
