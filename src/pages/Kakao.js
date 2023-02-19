@@ -16,12 +16,12 @@ const KaKao = () => {
       axios
         .get(`${`https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/${code}`}`)
         .then((res) => {
-          setLoading(true);
           localStorage.setItem("access_token", res.data.access_token);
           localStorage.setItem("id", res.data.user.id);
           localStorage.setItem("position", res.data.user.position);
+          setLoading(true);
           setTimeout(() => {
-            setLoading(true)
+            setLoading(true);
             navigate("/info");
           }, 300);
         })

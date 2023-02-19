@@ -92,7 +92,7 @@ const Complete = () => {
             <TextMedium>최종 발표 | 2023년 3월 20일(월)</TextMedium>
           </TextContainer>
         </Description>
-        <Space height="50px" />
+        <Space height="25px" />
         <ButtonContainer>
           <Click onClick={gotoMain}>
             <Button width="167px" height="47px" text="홈으로 돌아가기" fontSize="16px" borderRadius="10px" />
