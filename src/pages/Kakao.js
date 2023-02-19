@@ -15,6 +15,8 @@ const KaKao = () => {
         .get(`${`https://port-0-applion-server-108dypx2ale6pqivi.sel3.cloudtype.app/api/kuser/kakao/callback/${code}`}`)
         .then((res) => {
           localStorage.setItem("access_token", res.data.access_token);
+          localStorage.setItem("id", res.data.user.id);
+          localStorage.setItem("position", response.data.user.position);
           setTimeout(() => {
             navigate("/info");
           }, 300);
