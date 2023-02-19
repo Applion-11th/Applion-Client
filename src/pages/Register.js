@@ -130,88 +130,90 @@ const Register = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <Space height="50px" />
+    <>
       {loading && <Loading />}
-      <Flex>
-        <Title>회원가입</Title>
-        <Modal isMount={isModal} onClick={showModal} />
-        <Space height="10px" />
-        <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
-        <Space height="25px" />
-        <Form action="#" onSubmit={handleSubmit}>
-          <Text>id</Text>
-          <FlexRow>
+      <div style={{ position: "relative" }}>
+        <Space height="50px" />
+        <Flex>
+          <Title>회원가입</Title>
+          <Modal isMount={isModal} onClick={showModal} />
+          <Space height="10px" />
+          <Description>회원가입 후 지원서 작성이 가능합니다.</Description>
+          <Space height="25px" />
+          <Form action="#" onSubmit={handleSubmit}>
+            <Text>id</Text>
+            <FlexRow>
+              <FlexInfo>
+                <Input onChange={(e) => handleChange(e)} id="username" value={info.username} width="310px" />
+                <TextSmall>영문, 숫자를 혼합하여 8~20자로 구성</TextSmall>
+              </FlexInfo>
+              <Click onClick={isValid.username ? isDuplicate : ""}>
+                <Button
+                  width="100px"
+                  height="47px"
+                  text="중복확인"
+                  fontSize="18px"
+                  borderRadius="10px"
+                  color={isValid.username ? palette.red : "gray"}
+                />
+              </Click>
+            </FlexRow>
+            <Space height="5px" />
+            <Text>password</Text>
             <FlexInfo>
-              <Input onChange={(e) => handleChange(e)} id="username" value={info.username} width="310px" />
+              <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
               <TextSmall>영문, 숫자를 혼합하여 8~20자로 구성</TextSmall>
             </FlexInfo>
-            <Click onClick={isValid.username ? isDuplicate : ""}>
-              <Button
-                width="100px"
-                height="47px"
-                text="중복확인"
-                fontSize="18px"
-                borderRadius="10px"
-                color={isValid.username ? palette.red : "gray"}
-              />
-            </Click>
-          </FlexRow>
-          <Space height="5px" />
-          <Text>password</Text>
-          <FlexInfo>
-            <InputPwd onChange={(e) => handleChange(e)} id="pw1" value={info.pw1} />
-            <TextSmall>영문, 숫자를 혼합하여 8~20자로 구성</TextSmall>
-          </FlexInfo>
-          <Space height="5px" />
-          <Text>verify password</Text>
-          <InputPwd onChange={(e) => handleChange(e)} id="pw2" value={info.pw2} />
-          <div style={{ display: "flex", justifyContent: "end", height: "15px" }}>
-            <span style={{ fontFamily: "Pretendard", color: isValid.pw ? "green" : "red", fontSize: "12px" }}>
-              {info.pw2 === "" ? "" : isValid.pw ? "비밀번호가 동일합니다" : "비밀번호가 동일하지 않습니다"}
-            </span>
-          </div>
-          <Space height="12px" />
-          <AgreeContainer>
-            <Agree>
-              <input required type="checkbox" />
-              개인정보 수집 및 이용 동의서
-            </Agree>
-            <span
-              onClick={showModal}
-              style={{ cursor: "pointer", marginLeft: "10px", fontSize: "10px", color: "lightGray", marginTop: "5px" }}
-            >
-              더보기
-            </span>
-          </AgreeContainer>
-          <Space height="24px" />
-          <Button
-            width="459px"
-            height="47px"
-            text="회원가입 완료"
-            fontSize="18px"
-            borderRadius="10px"
-            type="submit"
-            color={
-              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
-                ? palette.red
-                : "gray"
-            }
-            cursor={
-              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
-                ? "pointer"
-                : "default"
-            }
-            events={
-              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
-                ? "auto"
-                : "none"
-            }
-          />
-        </Form>
-      </Flex>
-      <Space height="50px" />
-    </div>
+            <Space height="5px" />
+            <Text>verify password</Text>
+            <InputPwd onChange={(e) => handleChange(e)} id="pw2" value={info.pw2} />
+            <div style={{ display: "flex", justifyContent: "end", height: "15px" }}>
+              <span style={{ fontFamily: "Pretendard", color: isValid.pw ? "green" : "red", fontSize: "12px" }}>
+                {info.pw2 === "" ? "" : isValid.pw ? "비밀번호가 동일합니다" : "비밀번호가 동일하지 않습니다"}
+              </span>
+            </div>
+            <Space height="12px" />
+            <AgreeContainer>
+              <Agree>
+                <input required type="checkbox" />
+                개인정보 수집 및 이용 동의서
+              </Agree>
+              <span
+                onClick={showModal}
+                style={{ cursor: "pointer", marginLeft: "10px", fontSize: "10px", color: "lightGray", marginTop: "5px" }}
+              >
+                더보기
+              </span>
+            </AgreeContainer>
+            <Space height="24px" />
+            <Button
+              width="459px"
+              height="47px"
+              text="회원가입 완료"
+              fontSize="18px"
+              borderRadius="10px"
+              type="submit"
+              color={
+                isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                  ? palette.red
+                  : "gray"
+              }
+              cursor={
+                isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                  ? "pointer"
+                  : "default"
+              }
+              events={
+                isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                  ? "auto"
+                  : "none"
+              }
+            />
+          </Form>
+        </Flex>
+        <Space height="50px" />
+      </div>
+    </>
   );
 };
 

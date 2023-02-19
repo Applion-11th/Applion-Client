@@ -16,7 +16,6 @@ const InputContainer = styled.input`
   background-color: black;
   color: white;
   caret-color: white;
-
   &:focus {
     outline: none;
   }
