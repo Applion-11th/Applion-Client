@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import palette from "../styles/colors";
+import logoSogang from "../assets/logoSogang.svg";
 
 const Login = () => {
   useEffect(() => {
@@ -81,40 +82,44 @@ const Login = () => {
   return (
     <>
       <Space height="50px" />
-      <Flex>
-        <Title>로그인</Title>
-        <Space height="25px" />
-        <Form action="#" onSubmit={handleSubmit} onKeyDown={onCheckEnter}>
-          <Text>id</Text>
-          <Input onChange={(e) => handleChange(e)} id="username" value={info.username || ""} />
+      <FlexRow>
+        <Flex>
+          <Space height="120px" />
+          <ImgContainer src={logoSogang} />
+        </Flex>
+        <Flex>
+          <Title>로그인</Title>
+          <Space height="25px" />
+          <Form action="#" onSubmit={handleSubmit} onKeyDown={onCheckEnter}>
+            <Text>id</Text>
+            <Input onChange={(e) => handleChange(e)} id="username" value={info.username || ""} />
+            <Space height="29px" />
+            <Text>password</Text>
+            <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw || ""} />
+            <Space height="9px" />
+            {info.correct ? (
+              <></>
+            ) : (
+              <TextRed>
+                <CgDanger /> 로그인 정보를 확인해주세요
+              </TextRed>
+            )}
+            <Space height="20px" />
+            <Button width="459px" height="47px" text="로그인" fontSize="18px" borderRadius="10px" type="submit" />
+          </Form>
           <Space height="29px" />
-          <Text>password</Text>
-          <InputPwd onChange={(e) => handleChange(e)} id="pw" value={info.pw || ""} />
-          <Space height="9px" />
-          {info.correct ? (
-            <></>
-          ) : (
-            <TextRed>
-              <CgDanger /> 로그인 정보를 확인해주세요
-            </TextRed>
-          )}
-
-          <Space height="20px" />
-          <Button width="459px" height="47px" text="로그인" fontSize="18px" borderRadius="10px" type="submit" />
-        </Form>
-
-        <Space height="29px" />
-        <Click onClick={goToRegister}>
-          <Button width="459px" height="47px" text="회원가입 하러가기" fontSize="18px" borderRadius="10px" />
-        </Click>
-        <Space height="29px" />
-        <KaKaoLoginBtn onClick={socialLoginHandler}>
-          <InlineFlex>
-            <BsFillChatFill style={{ color: "#191604", marginRight: "15px" }} />
-            카카오톡으로 로그인하기
-          </InlineFlex>
-        </KaKaoLoginBtn>
-      </Flex>
+          <Click onClick={goToRegister}>
+            <Button width="459px" height="47px" text="회원가입 하러가기" fontSize="18px" borderRadius="10px" />
+          </Click>
+          <Space height="29px" />
+          <KaKaoLoginBtn onClick={socialLoginHandler}>
+            <InlineFlex>
+              <BsFillChatFill style={{ color: "#191604", marginRight: "15px" }} />
+              카카오톡으로 로그인하기
+            </InlineFlex>
+          </KaKaoLoginBtn>
+        </Flex>
+      </FlexRow>
     </>
   );
 };
@@ -170,4 +175,14 @@ const TextRed = styled.div`
   font-weight: 500;
   align-items: center;
   text-align: center;
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const ImgContainer = styled.img`
+  padding-bottom: 50px;
 `;
