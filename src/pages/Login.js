@@ -63,6 +63,7 @@ const Login = () => {
       })
       .then((response) => {
         if (response.status === 200) {
+          setLoading(true);
           localStorage.setItem("access_token", response.data.access_token);
           localStorage.setItem("id", response.data.user.id);
           localStorage.setItem("position", response.data.user.position);
