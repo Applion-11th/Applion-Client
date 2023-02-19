@@ -45,7 +45,7 @@ const Complete = () => {
           console.log(error.request.response);
         });
     }
-    return <TextMedium>{`최종 제출 시각: ${year}년 ${month}월 ${day}일 ${time}시 ${minute}분`}</TextMedium>;
+    return <TextMedium>{`최종 제출 시각 : ${year}년 ${month}월 ${day}일 ${time}시 ${minute}분`}</TextMedium>;
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Complete = () => {
         <Text>지원 완료되었습니다.</Text>
         <Space height="20px" />
         <ShowChangedate />
-        <Space height="20px" />
+        <Space height="50px" />
         <ImgContainer src={logoSogang} />
         <Description>
           <TextContainer>
@@ -75,7 +75,6 @@ const Complete = () => {
           </TextContainer>
           <Space height="10px" />
           <TextContainer>
-            <Space margin="0px 80px 0px 0px" />
             <TextSmall>서류 발표 후, 면접 날짜 선택</TextSmall>
           </TextContainer>
           <Space height="10px" />
@@ -122,7 +121,6 @@ const Flex = styled.div`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   font-weight: 400;
   font-size: 18px;
 `;
@@ -134,7 +132,7 @@ const ImgContainer = styled.img`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const ButtonContainer = styled.div`
