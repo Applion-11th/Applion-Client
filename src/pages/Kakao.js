@@ -16,7 +16,7 @@ const KaKao = () => {
         .then((res) => {
           localStorage.setItem("access_token", res.data.access_token);
           localStorage.setItem("id", res.data.user.id);
-          localStorage.setItem("position", response.data.user.position);
+          localStorage.setItem("position", res.data.user.position);
           setTimeout(() => {
             navigate("/info");
           }, 300);
