@@ -47,14 +47,27 @@ const Register = () => {
 
     if (id === "username") {
       verifyusername(value);
+      setFilled({
+        ...filled,
+        username: true,
+      });
     } else if (id === "pw1") {
       verifyPW(value);
+      setFilled({
+        ...filled,
+        pw1: true,
+      });
     } else if (id === "pw2") {
       isPWSame(value);
+      setFilled({
+        ...filled,
+        pw2: true,
+      });
     }
   };
 
   const [isValid, setIsValid] = useState({ username: false, pw: false, duplicate: true, match: false });
+  const [filled, setFilled] = useState({ username: false, pw1: false, pw2: false });
 
   const verifyusername = () => {
     let usernameVal = info.username;
@@ -174,7 +187,11 @@ const Register = () => {
             fontSize="18px"
             borderRadius="10px"
             type="submit"
-            color={isValid.username && isValid.pw && isValid.duplicate ? palette.red : "gray"}
+            color={
+              isValid.username && isValid.pw && isValid.duplicate && filled.username && filled.pw1 && filled.pw2
+                ? palette.red
+                : "gray"
+            }
           />
         </Form>
       </Flex>
