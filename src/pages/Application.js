@@ -97,11 +97,14 @@ const Application = () => {
   const currDate = new Date().toLocaleDateString();
   const dueDate = new Date(2023, 2, 10).toLocaleDateString();
 
+  const [track, setTrack] = useState("이");
+
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/login");
     }
-  });
+    setTrack(localStorage.getItem("position"));
+  }, []);
 
   return (
     <>
@@ -160,8 +163,8 @@ const Application = () => {
               </FormInnerContainer>
               <FormInnerContainer>
                 <Text>
-                  2. 파트를 선택한 이유와 관련 경험을 해본 적이 있는지, 그리고 이 파트를 통해 어떠한 성장을 희망하시는지
-                  작성해주세요. (500자 이내)
+                  2. {track} 파트를 선택한 이유와 관련 경험을 해본 적이 있는지, 그리고 {track} 파트를 통해 어떠한 성장을
+                  희망하시는지 작성해주세요. (500자 이내)
                 </Text>
                 <InputApply value={questions.app2 || ""} id="app2" onChange={(e) => handleChange(e)} />
               </FormInnerContainer>
