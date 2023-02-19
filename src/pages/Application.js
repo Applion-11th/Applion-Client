@@ -29,7 +29,6 @@ const Application = () => {
         })
         .then((response) => {
           if (response.status === 200) {
-            console.log(response.data);
             setQuestions({
               ...questions,
               updated_at: response.data.updated_at,
@@ -85,7 +84,6 @@ const Application = () => {
       )
       .then((response) => {
         if (response.status === 200) {
-          console.log("gotocomplete");
           navigate("/complete");
         }
       })
@@ -196,7 +194,6 @@ const Application = () => {
             <ButtonContainer>
               <Click
                 onClick={() => {
-                  console.log("save");
                   navigate("/info");
                 }}
               >

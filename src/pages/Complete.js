@@ -41,7 +41,6 @@ const Complete = () => {
             setDay(Changedate.getDate());
             setTime(Changedate.getHours());
             setMinute(Changedate.getMinutes());
-            console.log(Year);
           }
         })
         .catch((error) => {
@@ -125,7 +124,6 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   font-weight: 400;
   font-size: 18px;
 `;

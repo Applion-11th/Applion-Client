@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Button, Space } from "../atoms";
+import { Space } from "../atoms";
 import styled from "styled-components";
 import logoFull from "../../assets/logoFull.svg";
 import logoApply from "../../assets/logoFullApply.svg";

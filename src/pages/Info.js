@@ -81,7 +81,6 @@ const Info = () => {
         if (response.status === 200) {
           navigate("/apply");
           localStorage.setItem("position", moreInfo.position);
-          console.log(moreInfo);
         }
       })
       .catch((error) => {

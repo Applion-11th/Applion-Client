@@ -102,7 +102,6 @@ const Register = () => {
   };
 
   const isDuplicate = () => {
-    console.log(info.username);
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}checkid/${info.username}`, {})
       .then((response) => {
