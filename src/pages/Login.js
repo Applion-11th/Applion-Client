@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import palette from "../styles/colors";
 
 const Login = () => {
-
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
@@ -73,6 +72,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error.request.response);
         setInfo({ correct: false });
+        setLoading(false);
       });
   };
 
@@ -88,7 +88,7 @@ const Login = () => {
   return (
     <>
       <Space height="50px" />
-      {loading && <Loading/>}
+      {loading && <Loading />}
       <Flex>
         <Title>로그인</Title>
         <Space height="25px" />
