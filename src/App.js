@@ -29,28 +29,25 @@ const App = () => {
 
   return (
     <>
+      <BrowserRouter>
+        <Header />
+          <Routes>
+            <Route path="/" exact element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/complete" element={<Complete />} />
+            <Route path="/info" element={<Info />} />
+            <Route path="/apply" element={<Application />} />
+            <Route path="/kakao/callback" element={<KaKao />} />
+          </Routes>
+        </BrowserRouter>
       {isPC ? (
         <>
-          <BrowserRouter>
-            <Header />
-            <Routes>
-              <Route path="/" exact element={<Main />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/complete" element={<Complete />} />
-              <Route path="/info" element={<Info />} />
-              <Route path="/apply" element={<Application />} />
-              <Route path="/kakao/callback" element={<KaKao />} />
-            </Routes>
-          </BrowserRouter>
         </>
       ) : (
         <>
           <Flex>
-            <Space height="100px" />
-            <LogoContainer src={logoPlaceHolder} />
-            <Text>768px 이상의 화면에서 접속해주세요!</Text>
-            <ImgContainer src={placeholder} />
+            <Text>데스크탑으로 접속해주세요!</Text>
           </Flex>
         </>
       )}
@@ -61,10 +58,17 @@ const App = () => {
 export default App;
 
 const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+display: flex;
+margin: 0;
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.7);
+overflow: scroll;
 `;
 
 const Text = styled.div`
