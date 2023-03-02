@@ -94,8 +94,8 @@ const Application = () => {
       });
   };
 
-  const currDate = new Date().toLocaleDateString();
-  const dueDate = new Date(2023, 3, 10).toLocaleDateString();
+  const currDate = new Date().getTime();
+  const dueDate = new Date("2023-3-9 23:59:59").getTime();
 
   const [track, setTrack] = useState("이");
 
@@ -108,7 +108,7 @@ const Application = () => {
 
   return (
     <>
-      {loading && <Loading/>}
+      {loading && <Loading />}
       {currDate >= dueDate ? (
         <OverDueFlex>
           <OverDueText>모집이 마감되었습니다.</OverDueText>
