@@ -94,8 +94,8 @@ const Application = () => {
       });
   };
 
-  const currDate = new Date().toLocaleDateString();
-  const dueDate = new Date(2023, 3, 10).toLocaleDateString();
+  const currDate = new Date()
+  const dueDate = new Date(2023, 2, 10);
 
   const [track, setTrack] = useState("이");
 
