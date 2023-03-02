@@ -181,7 +181,13 @@ const Register = () => {
               </Agree>
               <span
                 onClick={showModal}
-                style={{ cursor: "pointer", marginLeft: "10px", fontSize: "10px", color: "lightGray", marginTop: "5px" }}
+                style={{
+                  cursor: "pointer",
+                  marginLeft: "10px",
+                  fontSize: "10px",
+                  color: "lightGray",
+                  marginTop: "5px",
+                }}
               >
                 더보기
               </span>
