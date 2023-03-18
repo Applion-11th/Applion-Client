@@ -16,7 +16,6 @@
 
 ![image](https://user-images.githubusercontent.com/77887276/225937566-941e2445-ba8c-4199-a0c9-fd474061accf.png)
 
-
 ## 폴더구조
 
 ```
@@ -47,3 +46,21 @@
 ```
 
 ## 작업한 사람들
+
+<div align="center">
+ 
+<a href="https://github.com/dianexjeong">
+  <img src="https://github.com/dianexjeong.png" width="100">
+</a>
+  
+<a href="https://github.com/chxxrin">
+  <img src="https://github.com/chxxrin.png" width="100">
+</a>
+
+ <a href="https://github.com/NakedGreeen">
+  <img src="https://github.com/NakedGreeen.png" width="100">
+</a>
+  
+ <a href="https://github.com/wooseok123">
+  <img src="https://github.com/wooseok123.png" width="100">
+</a>
